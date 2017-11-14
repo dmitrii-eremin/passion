@@ -74,25 +74,29 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)output\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)external\SDL2\include;$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)external\SDL2\lib\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)output\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)external\SDL2\include;$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)external\SDL2\lib\x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)output\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)external\SDL2\include;$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)external\SDL2\lib\x86;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)output\intermediate\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)external\SDL2\include;$(SolutionDir)sources\libpassion\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)external\SDL2\lib\x64;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -106,6 +110,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,6 +125,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,6 +144,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,16 +163,21 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\libpassion.h" />
+    <ClInclude Include="include\passion.h" />
+    <ClInclude Include="include\passion_private.h" />
     <ClInclude Include="include\utils\ps_api.h" />
+    <ClInclude Include="include\utils\ps_check.h" />
     <ClInclude Include="include\utils\ps_status.h" />
     <ClInclude Include="include\utils\ps_version.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c" />
+    <ClCompile Include="source\passion.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
