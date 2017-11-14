@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpassion", "sources\libpassion\libpassion.vcxproj", "{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "projects", "projects", "{A8B8F754-99FC-4E00-96A8-07460DF615E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{052AC4C4-FB1B-4BD4-BF0F-808E61460629}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		CHANGELOG.md = CHANGELOG.md
+		CODINGSTYLE.rst = CODINGSTYLE.rst
+		CONTRIBUTING.md = CONTRIBUTING.md
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "passion", "sources\passion\passion.vcxproj", "{BFBD1465-B658-4B8B-B502-F0F121582221}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C} = {C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Debug|x64.ActiveCfg = Debug|x64
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Debug|x64.Build.0 = Debug|x64
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Debug|x86.ActiveCfg = Debug|Win32
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Debug|x86.Build.0 = Debug|Win32
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Release|x64.ActiveCfg = Release|x64
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Release|x64.Build.0 = Release|x64
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Release|x86.ActiveCfg = Release|Win32
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C}.Release|x86.Build.0 = Release|Win32
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Debug|x64.ActiveCfg = Debug|x64
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Debug|x64.Build.0 = Debug|x64
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Debug|x86.ActiveCfg = Debug|Win32
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Debug|x86.Build.0 = Debug|Win32
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Release|x64.ActiveCfg = Release|x64
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Release|x64.Build.0 = Release|x64
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Release|x86.ActiveCfg = Release|Win32
+		{BFBD1465-B658-4B8B-B502-F0F121582221}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C9355AC7-DD51-4C16-AEF3-557FBDCCD09C} = {A8B8F754-99FC-4E00-96A8-07460DF615E6}
+		{BFBD1465-B658-4B8B-B502-F0F121582221} = {A8B8F754-99FC-4E00-96A8-07460DF615E6}
+	EndGlobalSection
+EndGlobal
