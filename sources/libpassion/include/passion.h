@@ -9,11 +9,11 @@
 #include "utils/ps_version.h"
 
 struct ps_passion {
-        struct ps_filesystem *filesystem;
-
-        enum ps_status(*get_version)(
-                struct ps_passion *this, ps_version *version
-        );
+        struct ps_filesystem filesystem;
 };
+
+PS_PUBLIC_API enum ps_status ps_get_version(struct ps_passion *this, 
+        ps_version *version
+);
 
 #endif

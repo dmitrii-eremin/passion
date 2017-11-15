@@ -33,9 +33,6 @@
     <ClInclude Include="include\utils\ps_check.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\passion_private.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\modules\ps_filesystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -43,9 +40,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\modules\filesystem\ps_filedecoder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\modules\filesystem\ps_filesystem_private.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

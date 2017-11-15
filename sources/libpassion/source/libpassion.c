@@ -3,7 +3,6 @@
 #include <SDL.h>
 
 #include <passion.h>
-#include <passion_private.h>
 
 enum ps_status ps_initialize(ps_version version, struct ps_passion **passion)
 {
@@ -12,13 +11,13 @@ enum ps_status ps_initialize(ps_version version, struct ps_passion **passion)
         if (version != PS_VERSION_CURRENT)
                 return PS_STATUS_INCOMPATIBLE_VERSION;
 
-        PS_STATUS_ASSERT(ps_create_passion(passion));
+        *passion = malloc(sizeof(struct ps_passion));
 
         return PS_STATUS_SUCCESS;
 }
 
 enum ps_status ps_deinitialize(struct ps_passion *passion)
 {
-        PS_STATUS_ASSERT(ps_destroy_passion(passion));
+        free(passion);
         return PS_STATUS_SUCCESS;
 }

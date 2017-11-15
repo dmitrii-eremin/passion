@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <modules/filesystem/ps_filesystem_private.h>
 #include <passion.h>
 
-enum ps_status append(struct ps_filesystem *this,
+enum ps_status ps_filesystem_append(struct ps_passion *this,
         const char *filename, const char *data, uint32_t size
 )
 {
@@ -25,7 +24,7 @@ enum ps_status append(struct ps_filesystem *this,
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status get_size(struct ps_filesystem *this,
+enum ps_status ps_filesystem_get_size(struct ps_passion *this,
         const char *filename, uint32_t *filesize
 )
 {
@@ -43,7 +42,7 @@ enum ps_status get_size(struct ps_filesystem *this,
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status read(struct ps_filesystem *this,
+enum ps_status ps_filesystem_read(struct ps_passion *this,
         const char *filename, uint32_t size, 
         char *content, uint32_t *read
 )
@@ -59,7 +58,7 @@ enum ps_status read(struct ps_filesystem *this,
                 PS_CHECK(read, PS_STATUS_INVALID_ARGUMENT);
 
                 PS_STATUS_ASSERT(
-                        this->get_size(this, filename, &size)
+                        ps_filesystem_get_size(this, filename, &size)
                 );
 
                 size = min(size, *read);
@@ -74,7 +73,7 @@ enum ps_status read(struct ps_filesystem *this,
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status write(struct ps_filesystem *this,
+enum ps_status ps_filesystem_write(struct ps_passion *this,
         const char *filename, const char *data, uint32_t size
 )
 {
@@ -91,29 +90,5 @@ enum ps_status write(struct ps_filesystem *this,
         fwrite(data, size, 1, file);
         fclose(file);
 
-        return PS_STATUS_SUCCESS;
-}
-
-enum ps_status ps_create_filesystem(struct ps_filesystem **object)
-{
-        PS_CHECK(object, PS_STATUS_INVALID_ARGUMENT);
-
-        *object = malloc(sizeof(struct ps_filesystem));
-
-        (*object)->append = append;
-        (*object)->get_size = get_size;
-        (*object)->read = read;
-        (*object)->write = write;
-
-        return PS_STATUS_SUCCESS;
-}
-
-enum ps_status ps_destroy_filesystem(struct ps_filesystem *object)
-{
-        if (!object) {
-                return PS_STATUS_SUCCESS;
-        }
-
-        free(object);
         return PS_STATUS_SUCCESS;
 }

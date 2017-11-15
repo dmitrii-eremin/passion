@@ -31,15 +31,13 @@ int run_script(int argc, char **argv)
         strcat(filename, "/__main__.py");
 
         uint32_t filesize = 0;
-        passion->filesystem->get_size(passion->filesystem,
-                filename, &filesize);
+        ps_filesystem_get_size(passion, filename, &filesize);
 
         if (filesize == 0) 
                 return 0;
 
         char *content = malloc(filesize + 1);
-        passion->filesystem->read(passion->filesystem,
-                filename, filesize, content, &filesize);
+        ps_filesystem_read(passion, filename, filesize, content, &filesize);
         content[filesize] = 0;
 
         Py_SetProgramName(L"passion");
