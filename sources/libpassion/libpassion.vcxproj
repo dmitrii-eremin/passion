@@ -170,16 +170,19 @@
     <ClInclude Include="include\libpassion.h" />
     <ClInclude Include="include\modules\filesystem\ps_filedecoder.h" />
     <ClInclude Include="include\modules\filesystem\ps_filemode.h" />
+    <ClInclude Include="include\modules\ps_callbacks.h" />
     <ClInclude Include="include\modules\ps_filesystem.h" />
     <ClInclude Include="include\passion.h" />
     <ClInclude Include="include\utils\ps_api.h" />
     <ClInclude Include="include\utils\ps_check.h" />
+    <ClInclude Include="include\utils\ps_context.h" />
     <ClInclude Include="include\utils\ps_status.h" />
     <ClInclude Include="include\utils\ps_version.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c" />
-    <ClCompile Include="source\modules\filesystem\ps_filesystem.c" />
+    <ClCompile Include="source\modules\ps_callbacks.c" />
+    <ClCompile Include="source\modules\ps_filesystem.c" />
     <ClCompile Include="source\passion.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

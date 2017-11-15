@@ -20,9 +20,10 @@ enum ps_status {
         PS_STATUS_NOT_IMPLEMENTED_YET,
 
         PS_STATUS_INVALID_ARGUMENT,
+        PS_STATUS_IVALID_OBJECT,
         PS_STATUS_FAILED_TO_OPEN,
 
-        PS_STATUS_MAX_STATUS
+        PS_STATUS_MAX
 };
 
 #endif

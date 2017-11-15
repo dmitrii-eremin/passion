@@ -4,6 +4,24 @@
 
 #include <passion.h>
 
+enum ps_status ps_filesystem_initialize(struct ps_passion *this)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+
+        this->filesystem.stub = NULL;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_filesystem_deinitialize(struct ps_passion *this)
+{
+        if (!this) {
+                return PS_STATUS_SUCCESS;
+        }
+        
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status ps_filesystem_append(struct ps_passion *this,
         const char *filename, const char *data, uint32_t size
 )

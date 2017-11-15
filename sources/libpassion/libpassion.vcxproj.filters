@@ -42,6 +42,12 @@
     <ClInclude Include="include\modules\filesystem\ps_filedecoder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\ps_callbacks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\ps_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -50,7 +56,10 @@
     <ClCompile Include="source\passion.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\modules\filesystem\ps_filesystem.c">
+    <ClCompile Include="source\modules\ps_filesystem.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\ps_callbacks.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

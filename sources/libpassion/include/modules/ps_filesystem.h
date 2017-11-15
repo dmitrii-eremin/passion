@@ -16,6 +16,14 @@ struct ps_filesystem {
         void *stub;
 };
 
+PS_PRIVATE_API enum ps_status ps_filesystem_initialize(
+        struct ps_passion *this
+);
+
+PS_PRIVATE_API enum ps_status ps_filesystem_deinitialize(
+        struct ps_passion *this
+);
+
 PS_PUBLIC_API enum ps_status ps_filesystem_append(struct ps_passion *this,
         const char *filename, const char *data, uint32_t size
 );
