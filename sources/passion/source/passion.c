@@ -8,17 +8,6 @@ int main(int argc, char **argv)
 {        
         ps_initialize(PS_VERSION_CURRENT, &passion);
 
-        char content[512];
-        uint32_t max_size = 512;
-
-        passion->filesystem->read(
-                passion->filesystem,
-                "example-01/__main__.py", 
-                PS_FILESYSTEM_READ_ALL,
-
-                content, &max_size
-        );
-
         run_script(argc, argv);
 
         ps_deinitialize(passion);
