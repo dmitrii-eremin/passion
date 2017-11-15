@@ -1,6 +1,31 @@
 #include "../include/passion.h"
 
+int run_script(int argc, char **argv);
+
+struct ps_passion *passion = NULL;
+
 int main(int argc, char **argv)
+{        
+        ps_initialize(PS_VERSION_CURRENT, &passion);
+
+        char content[512];
+        uint32_t max_size = 512;
+
+        passion->filesystem->read(
+                passion->filesystem,
+                "example-01/__main__.py", 
+                PS_FILESYSTEM_READ_ALL,
+
+                content, &max_size
+        );
+
+        run_script(argc, argv);
+
+        ps_deinitialize(passion);
+        return 0;
+}
+
+int run_script(int argc, char **argv)
 {
         const char *usage = 
                 "No game to run.\n"
@@ -12,28 +37,21 @@ int main(int argc, char **argv)
                 return 0;
         }
 
-        struct ps_passion *passion = NULL;
-        enum ps_status status = ps_initialize(PS_VERSION_CURRENT, &passion);
-        if (PS_STATUS_FAILED(status)) {
-                return 0;
-        }
-
         char filename[1024];
         strcpy(filename, argv[1]);
         strcat(filename, "/__main__.py");
 
-        long fsize = get_file_size(filename);
-        if (fsize <= 0) {
-                printf(
-                        "Game '%s' or file '__main__.py' doesn't exist.", 
-                        filename
-                );
-                return 0;
-        }
+        uint32_t filesize = 0;
+        passion->filesystem->get_size(passion->filesystem,
+                filename, &filesize);
 
-        char *content = malloc(fsize + 1);
-        read_whole_file(filename, content, fsize);
-        content[fsize] = '\0';
+        if (filesize == 0) 
+                return 0;
+
+        char *content = malloc(filesize + 1);
+        passion->filesystem->read(passion->filesystem,
+                filename, filesize, content, &filesize);
+        content[filesize] = 0;
 
         Py_SetProgramName(L"passion");
         Py_Initialize();
@@ -43,34 +61,5 @@ int main(int argc, char **argv)
         Py_FinalizeEx();
 
         free(content);
-
-        ps_deinitialize(passion);
         return 0;
-}
-
-void read_whole_file(const char *filename, char *content, long maxlen)
-{
-        FILE *file = fopen(filename, "rb");
-        if (!file) 
-                return;
-
-        fseek(file, 0, SEEK_END);
-        long size = ftell(file);
-        fseek(file, 0, SEEK_SET);
-
-        size = min(size, maxlen);
-        fread(content, size, 1, file);
-        fclose(file);
-}
-
-long get_file_size(const char *filename)
-{
-        FILE *file = fopen(filename, "rb");
-        if (!file)
-                return 0;
-
-        fseek(file, 0, SEEK_END);
-        long size = ftell(file);
-        fclose(file);
-        return size;
 }

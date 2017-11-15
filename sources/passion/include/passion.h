@@ -8,8 +8,4 @@
 
 #include <libpassion.h>
 
-void read_whole_file(const char *filename, char *content, long maxlen);
-long get_file_size(const char *filename);
-
-
 #endif

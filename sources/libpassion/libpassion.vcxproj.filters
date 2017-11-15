@@ -36,12 +36,27 @@
     <ClInclude Include="include\passion_private.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\ps_filesystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\filesystem\ps_filemode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\filesystem\ps_filedecoder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\filesystem\ps_filesystem_private.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\passion.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\filesystem\ps_filesystem.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

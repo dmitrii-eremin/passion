@@ -1,0 +1,14 @@
+#ifndef LIBPASSION_INCLUDE_MODULES_PS_FILESYSTEM_PS_FILEMODE_H_
+#define LIBPASSION_INCLUDE_MODULES_PS_FILESYSTEM_PS_FILEMODE_H_
+#include <stdint.h>
+
+typedef uint8_t ps_filemode;
+
+enum PS_FILEMODE {
+        PS_FILEMODE_READ = 0x0001,
+        PS_FILEMODE_WRITE = 0x0002,
+        PS_FILEMODE_APPEND = 0x0004,
+        PS_FILEMODE_CLOSED = 0x0010
+};
+
+#endif
