@@ -31,8 +31,46 @@ enum ps_status ps_create_passion(
                         return status;
                 }
 
+                status = ps_event_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
                 status = ps_filesystem_initialize(g_passion);
                 if (PS_STATUS_FAILED(status)) {
+                        ps_event_deinitialize(g_passion);
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
+                status = ps_graphics_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_filesystem_deinitialize(g_passion);
+                        ps_event_deinitialize(g_passion);
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
+                status = ps_math_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_graphics_deinitialize(g_passion);
+                        ps_filesystem_deinitialize(g_passion);
+                        ps_event_deinitialize(g_passion);
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
+                status = ps_window_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_math_deinitialize(g_passion);
+                        ps_graphics_deinitialize(g_passion);
+                        ps_filesystem_deinitialize(g_passion);
+                        ps_event_deinitialize(g_passion);
                         ps_callbacks_deinitialize(g_passion);
                         free(g_passion);
                         return status;
@@ -65,8 +103,12 @@ enum ps_status ps_release_passion(struct ps_passion *passion)
         passion->ref_count--;
 
         if (passion->ref_count == 0) {
-                ps_callbacks_deinitialize(passion);
-                ps_filesystem_deinitialize(passion);
+                ps_window_deinitialize(g_passion);
+                ps_math_deinitialize(g_passion);
+                ps_graphics_deinitialize(g_passion);
+                ps_filesystem_deinitialize(g_passion);
+                ps_event_deinitialize(g_passion);
+                ps_callbacks_deinitialize(g_passion);
 
                 free(passion);
 
