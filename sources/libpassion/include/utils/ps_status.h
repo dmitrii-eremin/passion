@@ -21,6 +21,7 @@ enum ps_status {
 
         PS_STATUS_INVALID_ARGUMENT,
         PS_STATUS_IVALID_OBJECT,
+        PS_STATUS_NOT_INITIALIZED,
         PS_STATUS_FAILED_TO_OPEN,
 
         PS_STATUS_MAX

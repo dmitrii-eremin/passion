@@ -15,6 +15,8 @@ struct ps_passion {
         struct ps_callbacks callbacks;
 
         struct ps_context context;
+
+        int ref_count;
 };
 
 PS_PUBLIC_API enum ps_status ps_get_version(struct ps_passion *this, 

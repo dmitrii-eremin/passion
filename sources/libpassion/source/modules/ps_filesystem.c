@@ -34,7 +34,7 @@ enum ps_status ps_filesystem_append(struct ps_passion *this,
         }
 
         if (size == PS_FILESYSTEM_FULLSIZE)
-                size = strlen(data);
+                size = (uint32_t)strlen(data);
 
         fwrite(data, size, 1, file);
         fclose(file);
@@ -103,7 +103,7 @@ enum ps_status ps_filesystem_write(struct ps_passion *this,
         }
 
         if (size == PS_FILESYSTEM_FULLSIZE)
-                size = strlen(data);
+                size = (uint32_t)strlen(data);
 
         fwrite(data, size, 1, file);
         fclose(file);

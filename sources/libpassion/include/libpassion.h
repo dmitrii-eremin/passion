@@ -10,16 +10,20 @@
 #include "utils/ps_version.h"
 
 
-PS_PUBLIC_API enum ps_status ps_initialize(
+PS_PUBLIC_API enum ps_status ps_create_passion(
         ps_version version,
         struct ps_context *context,
         struct ps_passion **passion
 );
 
-PS_PUBLIC_API enum ps_status ps_run(struct ps_passion *passion);
+PS_PUBLIC_API enum ps_status ps_get_passion(
+        struct ps_passion **passion
+);
 
-PS_PUBLIC_API enum ps_status ps_deinitialize(
+PS_PUBLIC_API enum ps_status ps_release_passion(
         struct ps_passion *passion
 );
+
+PS_PUBLIC_API enum ps_status ps_run(struct ps_passion *passion);
 
 #endif

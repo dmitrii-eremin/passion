@@ -10,11 +10,11 @@ int main(int argc, char **argv)
 
         struct ps_passion *passion = NULL;
 
-        ps_initialize(PS_VERSION_CURRENT, &ctx, &passion);
+        ps_create_passion(PS_VERSION_CURRENT, &ctx, &passion);
 
         ps_run(passion);
 
-        ps_deinitialize(passion);
+        ps_release_passion(passion);
 
         return 0;
 }
