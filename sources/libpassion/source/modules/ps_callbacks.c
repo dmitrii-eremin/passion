@@ -4,6 +4,18 @@
 
 #include <stdio.h>
 
+enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
+{
+        PS_CHECK(this && e, PS_STATUS_INVALID_ARGUMENT);
+        switch (e->type) {
+        case PS_EVENT_QUIT:
+                break;
+        default:
+                break;
+        }
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status run(struct ps_passion *this)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -16,17 +28,37 @@ enum ps_status run(struct ps_passion *this)
 
         int argc = this->context.startup_args.argc - 1;
         char **argv = argc > 0 ? this->context.startup_args.argv + 1 : NULL;
-        status = PS_CALL_CALLBACK(this, load, argc, argv);
+        status = PS_CALLBACK_RUN(this, load, argc, argv);
         PS_STATUS_ASSERT(status);
 
         PS_STATUS_ASSERT(ps_timer_step(this));
 
         double dt = 0.0;
         while (true) {
+                PS_STATUS_ASSERT(ps_event_pump(this));
+                struct ps_event_data *event = NULL;
+                do {
+                        PS_STATUS_ASSERT(ps_event_poll(this, &event));
+                        if (!event)
+                                break;
+
+                        if (event->type == PS_EVENT_QUIT) {
+                                bool prevent = false;
+                                status = PS_CALLBACK_RUN(this, 
+                                        quit, &prevent);
+                                PS_STATUS_ASSERT(status);
+
+                                if (!prevent)
+                                        break;
+                        } else {
+                                PS_STATUS_ASSERT(process_event(this, event));
+                        }
+                } while (event);
+
                 PS_STATUS_ASSERT(ps_timer_step(this));
                 PS_STATUS_ASSERT(ps_timer_get_delta(this, &dt));
 
-                status = PS_CALL_CALLBACK(this, update, dt);
+                status = PS_CALLBACK_RUN(this, update, dt);
                 PS_STATUS_ASSERT(status);
 
                 bool active = false;
@@ -35,7 +67,7 @@ enum ps_status run(struct ps_passion *this)
                         PS_STATUS_ASSERT(ps_graphics_clear(this, NULL));
                         PS_STATUS_ASSERT(ps_graphics_origin(this));
 
-                        status = PS_CALL_CALLBACK(this, draw);
+                        status = PS_CALLBACK_RUN(this, draw);
                         PS_STATUS_ASSERT(status);
 
                         PS_STATUS_ASSERT(ps_graphics_present(this));
@@ -61,6 +93,15 @@ enum ps_status load(struct ps_passion *this, int argc, char **argv)
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status quit(struct ps_passion *this, bool *prevent)
+{
+        PS_CHECK(this && prevent, PS_STATUS_INVALID_ARGUMENT);
+
+        *prevent = false;
+
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status update(struct ps_passion *this, double dt)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -72,10 +113,11 @@ enum ps_status ps_callbacks_initialize(struct ps_passion *this)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
 
-        PS_SET_CALLBACK(this, run, run);
-        PS_SET_CALLBACK(this, draw, draw);
-        PS_SET_CALLBACK(this, load, load);
-        PS_SET_CALLBACK(this, update, update);
+        PS_CALLBACK_SET(this, run, run);
+        PS_CALLBACK_SET(this, draw, draw);
+        PS_CALLBACK_SET(this, load, load);
+        PS_CALLBACK_SET(this, quit, quit);
+        PS_CALLBACK_SET(this, update, update);
 
         return PS_STATUS_SUCCESS;
 }

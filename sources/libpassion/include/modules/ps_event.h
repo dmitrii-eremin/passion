@@ -3,6 +3,8 @@
 #include "../utils/ps_api.h"
 #include "../utils/ps_status.h"
 
+#include "event/ps_event_data.h"
+
 struct ps_passion;
 
 struct ps_event {
@@ -15,6 +17,15 @@ PS_PRIVATE_API enum ps_status ps_event_initialize(
 
 PS_PRIVATE_API enum ps_status ps_event_deinitialize(
         struct ps_passion *this
+);
+
+PS_PUBLIC_API enum ps_status ps_event_pump(
+        struct ps_passion *this
+);
+
+PS_PUBLIC_API enum ps_status ps_event_poll(
+        struct ps_passion *this,
+        struct ps_event_data **event
 );
 
 #endif
