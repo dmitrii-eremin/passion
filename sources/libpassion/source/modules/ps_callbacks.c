@@ -2,13 +2,10 @@
 
 enum ps_status run(struct ps_passion *this)
 {
-        PS_CALL_CALLBACK(this, load, 
-                (
-                        this, 
-                        this->context.startup_args.argc - 1, 
-                        this->context.startup_args.argv + 1
-                )
-        );
+        int argc = this->context.startup_args.argc - 1;
+        char **argv = argc > 0 ? this->context.startup_args.argv + 1 : NULL;
+        PS_CALL_CALLBACK(this, load, (this, argc, argv));
+
         return PS_STATUS_SUCCESS;
 }
 
