@@ -170,16 +170,20 @@
     <ClInclude Include="include\libpassion.h" />
     <ClInclude Include="include\modules\filesystem\ps_filedecoder.h" />
     <ClInclude Include="include\modules\filesystem\ps_filemode.h" />
+    <ClInclude Include="include\modules\math\ps_random_seed.h" />
     <ClInclude Include="include\modules\ps_callbacks.h" />
     <ClInclude Include="include\modules\ps_event.h" />
     <ClInclude Include="include\modules\ps_filesystem.h" />
     <ClInclude Include="include\modules\ps_graphics.h" />
     <ClInclude Include="include\modules\ps_math.h" />
+    <ClInclude Include="include\modules\ps_timer.h" />
     <ClInclude Include="include\modules\ps_window.h" />
+    <ClInclude Include="include\modules\timer\ps_time.h" />
     <ClInclude Include="include\passion.h" />
     <ClInclude Include="include\utils\ps_api.h" />
     <ClInclude Include="include\utils\ps_check.h" />
     <ClInclude Include="include\utils\ps_context.h" />
+    <ClInclude Include="include\utils\ps_platform.h" />
     <ClInclude Include="include\utils\ps_status.h" />
     <ClInclude Include="include\utils\ps_version.h" />
   </ItemGroup>
@@ -190,6 +194,7 @@
     <ClCompile Include="source\modules\ps_filesystem.c" />
     <ClCompile Include="source\modules\ps_graphics.c" />
     <ClCompile Include="source\modules\ps_math.c" />
+    <ClCompile Include="source\modules\ps_timer.c" />
     <ClCompile Include="source\modules\ps_window.c" />
     <ClCompile Include="source\passion.c" />
   </ItemGroup>

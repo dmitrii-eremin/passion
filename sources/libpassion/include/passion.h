@@ -6,6 +6,7 @@
 #include "modules/ps_filesystem.h"
 #include "modules/ps_graphics.h"
 #include "modules/ps_math.h"
+#include "modules/ps_timer.h"
 #include "modules/ps_window.h"
 
 #include "utils/ps_api.h"
@@ -21,6 +22,7 @@ struct ps_passion {
         struct ps_filesystem filesystem;        
         struct ps_graphics graphics;
         struct ps_math math;
+        struct ps_timer timer;
         struct ps_window window;
 
         struct ps_context context;

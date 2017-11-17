@@ -6,6 +6,7 @@
 #include "utils/ps_api.h"
 #include "utils/ps_check.h"
 #include "utils/ps_context.h"
+#include "utils/ps_platform.h"
 #include "utils/ps_status.h"
 #include "utils/ps_version.h"
 

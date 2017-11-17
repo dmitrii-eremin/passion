@@ -60,6 +60,18 @@
     <ClInclude Include="include\modules\ps_math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\math\ps_random_seed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\ps_timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\timer\ps_time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\ps_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -84,6 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\ps_math.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\ps_timer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
