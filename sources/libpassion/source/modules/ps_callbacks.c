@@ -29,8 +29,17 @@ enum ps_status run(struct ps_passion *this)
                 status = PS_CALL_CALLBACK(this, update, dt);
                 PS_STATUS_ASSERT(status);
 
-                status = PS_CALL_CALLBACK(this, draw);
-                PS_STATUS_ASSERT(status);
+                bool active = false;
+                PS_STATUS_ASSERT(ps_graphics_is_active(this, &active));
+                if (active) {
+                        PS_STATUS_ASSERT(ps_graphics_clear(this, NULL));
+                        PS_STATUS_ASSERT(ps_graphics_origin(this));
+
+                        status = PS_CALL_CALLBACK(this, draw);
+                        PS_STATUS_ASSERT(status);
+
+                        PS_STATUS_ASSERT(ps_graphics_present(this));
+                }                
 
                 PS_STATUS_ASSERT(ps_timer_sleep(this, 0.001));
         }
