@@ -134,7 +134,8 @@ enum ps_status ps_run(struct ps_passion *passion)
         PS_CHECK(passion, PS_STATUS_INVALID_ARGUMENT);
 
         PS_CHECK(passion->callbacks.run, PS_STATUS_IVALID_OBJECT);
-        passion->callbacks.run(passion);
+        
+        PS_CALL_CALLBACK(passion, run);
 
         return PS_STATUS_SUCCESS;
 }
