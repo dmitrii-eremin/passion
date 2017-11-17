@@ -4,11 +4,12 @@
 #include "../utils/ps_status.h"
 
 #include "event/ps_event_data.h"
+#include "event/ps_event_item.h"
 
 struct ps_passion;
 
 struct ps_event {
-        void *stub;
+        struct ps_event_item *events;
 };
 
 PS_PRIVATE_API enum ps_status ps_event_initialize(
@@ -19,11 +20,29 @@ PS_PRIVATE_API enum ps_status ps_event_deinitialize(
         struct ps_passion *this
 );
 
-PS_PUBLIC_API enum ps_status ps_event_pump(
+PS_PUBLIC_API enum ps_status ps_event_clear(
         struct ps_passion *this
 );
 
 PS_PUBLIC_API enum ps_status ps_event_poll(
+        struct ps_passion *this,
+        struct ps_event_data *event
+);
+
+PS_PUBLIC_API enum ps_status ps_event_pump(
+        struct ps_passion *this
+);
+
+PS_PUBLIC_API enum ps_status ps_event_push(
+        struct ps_passion *this,
+        struct ps_event_data *event
+);
+
+PS_PUBLIC_API enum ps_status ps_event_quit(
+        struct ps_passion *this
+);
+
+PS_PUBLIC_API enum ps_status ps_event_wait(
         struct ps_passion *this,
         struct ps_event_data **event
 );

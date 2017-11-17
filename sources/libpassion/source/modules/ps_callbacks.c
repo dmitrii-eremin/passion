@@ -36,24 +36,24 @@ enum ps_status run(struct ps_passion *this)
         double dt = 0.0;
         while (true) {
                 PS_STATUS_ASSERT(ps_event_pump(this));
-                struct ps_event_data *event = NULL;
+                struct ps_event_data event = { 0 };
                 do {
                         PS_STATUS_ASSERT(ps_event_poll(this, &event));
-                        if (!event)
+                        if (event.type == PS_EVENT_BREAK_POLLING)
                                 break;
 
-                        if (event->type == PS_EVENT_QUIT) {
+                        if (event.type == PS_EVENT_QUIT) {
                                 bool prevent = false;
                                 status = PS_CALLBACK_RUN(this, 
                                         quit, &prevent);
                                 PS_STATUS_ASSERT(status);
 
                                 if (!prevent)
-                                        break;
+                                        return PS_STATUS_SUCCESS;
                         } else {
-                                PS_STATUS_ASSERT(process_event(this, event));
+                                PS_STATUS_ASSERT(process_event(this, &event));
                         }
-                } while (event);
+                } while (event.type != PS_EVENT_BREAK_POLLING);
 
                 PS_STATUS_ASSERT(ps_timer_step(this));
                 PS_STATUS_ASSERT(ps_timer_get_delta(this, &dt));
