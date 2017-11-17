@@ -91,6 +91,8 @@ enum ps_status ps_create_passion(
                 }
         }
 
+        ps_window_set_mode(g_passion, 800, 600, NULL);
+
         return ps_get_passion(passion);
 }
 

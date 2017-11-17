@@ -6,7 +6,14 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
 {
         PS_CHECK(sdl && evt, PS_STATUS_INVALID_ARGUMENT);
 
-        evt->type = PS_EVENT_UNKNOWN;
+        switch (sdl->type) {
+        case SDL_QUIT:
+                evt->type = PS_EVENT_QUIT;
+                break;
+        default:
+                evt->type = PS_EVENT_UNKNOWN;
+                break;
+        }        
 
         return PS_STATUS_SUCCESS;
 }
