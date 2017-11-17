@@ -16,6 +16,8 @@ enum ps_status ps_create_passion(
         if (version != PS_VERSION_CURRENT)
                 return PS_STATUS_INCOMPATIBLE_VERSION;
 
+        SDL_Init(SDL_INIT_EVERYTHING);
+
         enum ps_status status = PS_STATUS_SUCCESS;
 
         if (!g_passion) {
@@ -125,6 +127,8 @@ enum ps_status ps_release_passion(struct ps_passion *passion)
                 free(passion);
 
                 g_passion = NULL;
+
+                SDL_Quit();
         }
         return PS_STATUS_SUCCESS;
 }
