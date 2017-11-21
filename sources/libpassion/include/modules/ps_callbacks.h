@@ -17,6 +17,13 @@ struct ps_callbacks {
                 int argc, char **argv
         );
         enum ps_status (*quit)(struct ps_passion *this, bool *prevent);
+
+        enum ps_status (*keypressed)(struct ps_passion *this, 
+                enum ps_keycode key, enum ps_scancode scancode, 
+                bool is_repeat);
+        enum ps_status (*keyreleased)(struct ps_passion *this,
+                enum ps_keycode key, enum ps_scancode scancode);
+
         enum ps_status (*update)(struct ps_passion *this, double dt);
 };
 

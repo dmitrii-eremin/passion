@@ -10,6 +10,18 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
         case SDL_QUIT:
                 evt->type = PS_EVENT_QUIT;
                 break;
+        case SDL_KEYDOWN:
+                evt->type = PS_EVENT_KEYPRESSED;
+                evt->key.key = (enum ps_keycode)sdl->key.keysym.sym;
+                evt->key.scancode = (enum ps_scancode)sdl->key.keysym.scancode;
+                evt->key.is_repeat = false;
+                break;
+        case SDL_KEYUP:
+                evt->type = PS_EVENT_KEYRELEASED;
+                evt->key.key = (enum ps_keycode)sdl->key.keysym.sym;
+                evt->key.scancode = (enum ps_scancode)sdl->key.keysym.scancode;
+                evt->key.is_repeat = false;
+                break;
         default:
                 evt->type = PS_EVENT_UNKNOWN;
                 break;

@@ -2,10 +2,12 @@
 #define LIBPASSION_INCLUDE_MODULES_PS_EVENT_PS_EVENT_TYPE_H_
 
 enum ps_event_type {
-        PS_EVENT_BREAK_POLLING,
-        PS_EVENT_UNKNOWN,
+        PS_EVENT_BREAK_POLLING = -1,
+        PS_EVENT_UNKNOWN = 0,
 
         PS_EVENT_QUIT,
+        PS_EVENT_KEYPRESSED,
+        PS_EVENT_KEYRELEASED,
 
         PS_EVENT_MAX
 };

@@ -9,6 +9,14 @@ enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
         PS_CHECK(this && e, PS_STATUS_INVALID_ARGUMENT);
         switch (e->type) {
         case PS_EVENT_QUIT:
+                break;     
+        case PS_EVENT_KEYPRESSED:
+                PS_CALLBACK_RUN(this, keypressed, 
+                        e->key.key, e->key.scancode, e->key.is_repeat);
+                break;
+        case PS_EVENT_KEYRELEASED:
+                PS_CALLBACK_RUN(this, keyreleased, 
+                        e->key.key, e->key.scancode);
                 break;
         default:
                 break;
@@ -102,6 +110,20 @@ enum ps_status quit(struct ps_passion *this, bool *prevent)
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status keypressed(struct ps_passion *this, enum ps_keycode key,
+        enum ps_scancode scancode, bool is_repeat)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status keyreleased(struct ps_passion *this, enum ps_keycode key,
+        enum ps_scancode scancode)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status update(struct ps_passion *this, double dt)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -117,6 +139,8 @@ enum ps_status ps_callbacks_initialize(struct ps_passion *this)
         PS_CALLBACK_SET(this, draw, draw);
         PS_CALLBACK_SET(this, load, load);
         PS_CALLBACK_SET(this, quit, quit);
+        PS_CALLBACK_SET(this, keypressed, keypressed);
+        PS_CALLBACK_SET(this, keyreleased, keyreleased);
         PS_CALLBACK_SET(this, update, update);
 
         return PS_STATUS_SUCCESS;
