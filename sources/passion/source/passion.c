@@ -2,8 +2,6 @@
 
 enum ps_status load(struct ps_passion *this, int argc, char **argv)
 {
-        ps_window_set_title(this, "Passion 0.1.0");
-        ps_window_set_mode(this, 1280, 720, NULL);
         return PS_STATUS_SUCCESS;
 }
 

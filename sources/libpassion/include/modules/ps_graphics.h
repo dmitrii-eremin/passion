@@ -32,6 +32,11 @@ PS_PUBLIC_API enum ps_status ps_graphics_get_background_color(
         struct ps_color *color
 );
 
+PS_PUBLIC_API enum ps_status ps_graphics_get_color(
+        struct ps_passion *this,
+        struct ps_color *color
+);
+
 PS_PUBLIC_API enum ps_status ps_graphics_is_active(
         struct ps_passion *this,
         bool *active
@@ -44,5 +49,16 @@ PS_PUBLIC_API enum ps_status ps_graphics_origin(
 PS_PUBLIC_API enum ps_status ps_graphics_present(
         struct ps_passion *this
 );
+
+PS_PUBLIC_API enum ps_status ps_graphics_set_background_color(
+        struct ps_passion *this,
+        double red, double green, double blue, double alpha
+);
+
+PS_PUBLIC_API enum ps_status ps_graphics_set_color(
+        struct ps_passion *this,
+        double red, double green, double blue, double alpha
+);
+
 
 #endif
