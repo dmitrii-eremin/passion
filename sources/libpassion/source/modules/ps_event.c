@@ -5,7 +5,7 @@
 enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
 {
         PS_CHECK(sdl && evt, PS_STATUS_INVALID_ARGUMENT);
-
+        SDL_BUTTON_LEFT;
         switch (sdl->type) {
         case SDL_QUIT:
                 evt->type = PS_EVENT_QUIT;
@@ -21,6 +21,20 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
                 evt->key.key = (enum ps_keycode)sdl->key.keysym.sym;
                 evt->key.scancode = (enum ps_scancode)sdl->key.keysym.scancode;
                 evt->key.is_repeat = false;
+                break;
+        case SDL_MOUSEBUTTONDOWN:
+                evt->type = PS_EVENT_MOUSEPRESSED;
+                evt->mouse.x = (uint16_t)sdl->button.x;
+                evt->mouse.y = (uint16_t)sdl->button.y;
+                evt->mouse.button = (enum ps_mouse_button)sdl->button.button;
+                evt->mouse.is_touch = sdl->button.which == SDL_TOUCH_MOUSEID;
+                break;
+        case SDL_MOUSEBUTTONUP:
+                evt->type = PS_EVENT_MOUSERELEASED;
+                evt->mouse.x = (uint16_t)sdl->button.x;
+                evt->mouse.y = (uint16_t)sdl->button.y;
+                evt->mouse.button = (enum ps_mouse_button)sdl->button.button;
+                evt->mouse.is_touch = sdl->button.which == SDL_TOUCH_MOUSEID;
                 break;
         default:
                 evt->type = PS_EVENT_UNKNOWN;

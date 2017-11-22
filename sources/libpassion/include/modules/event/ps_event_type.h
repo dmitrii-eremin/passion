@@ -6,8 +6,12 @@ enum ps_event_type {
         PS_EVENT_UNKNOWN = 0,
 
         PS_EVENT_QUIT,
+
         PS_EVENT_KEYPRESSED,
         PS_EVENT_KEYRELEASED,
+
+        PS_EVENT_MOUSEPRESSED,
+        PS_EVENT_MOUSERELEASED,
 
         PS_EVENT_MAX
 };

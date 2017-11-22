@@ -18,6 +18,16 @@ enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
                 PS_CALLBACK_RUN(this, keyreleased, 
                         e->key.key, e->key.scancode);
                 break;
+        case PS_EVENT_MOUSEPRESSED:
+                PS_CALLBACK_RUN(this, mousepressed,
+                        e->mouse.x, e->mouse.y, e->mouse.button, 
+                        e->mouse.is_touch);
+                break;
+        case PS_EVENT_MOUSERELEASED:
+                PS_CALLBACK_RUN(this, mousereleased,
+                        e->mouse.x, e->mouse.y, e->mouse.button,
+                        e->mouse.is_touch);
+                break;
         default:
                 break;
         }
@@ -124,6 +134,20 @@ enum ps_status keyreleased(struct ps_passion *this, enum ps_keycode key,
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status mousepressed(struct ps_passion *this, uint16_t x, uint16_t y, 
+        enum ps_mouse_button button, bool is_touch)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status mousereleased(struct ps_passion *this, uint16_t x, uint16_t y, 
+        enum ps_mouse_button button, bool is_touch)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status update(struct ps_passion *this, double dt)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -141,6 +165,8 @@ enum ps_status ps_callbacks_initialize(struct ps_passion *this)
         PS_CALLBACK_SET(this, quit, quit);
         PS_CALLBACK_SET(this, keypressed, keypressed);
         PS_CALLBACK_SET(this, keyreleased, keyreleased);
+        PS_CALLBACK_SET(this, mousepressed, mousepressed);
+        PS_CALLBACK_SET(this, mousereleased, mousereleased);
         PS_CALLBACK_SET(this, update, update);
 
         return PS_STATUS_SUCCESS;

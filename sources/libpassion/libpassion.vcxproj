@@ -172,6 +172,7 @@
     <ClInclude Include="include\modules\event\ps_event_item.h" />
     <ClInclude Include="include\modules\event\ps_event_type.h" />
     <ClInclude Include="include\modules\event\ps_keycode.h" />
+    <ClInclude Include="include\modules\event\ps_mouse_button.h" />
     <ClInclude Include="include\modules\event\ps_scancode.h" />
     <ClInclude Include="include\modules\filesystem\ps_filedecoder.h" />
     <ClInclude Include="include\modules\filesystem\ps_filemode.h" />

@@ -65,7 +65,7 @@ enum ps_status ps_window_get_title(struct ps_passion *this,
         );
         struct ps_window *w = &this->window;
 
-        uint32_t title_length = strlen(w->title);
+        uint32_t title_length = (uint32_t)strlen(w->title);
         title_length = min(title_length, count - 1);
 
         memcpy(title, w->title, title_length + 1);

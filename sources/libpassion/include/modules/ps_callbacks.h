@@ -1,6 +1,7 @@
 #ifndef LIBPASSION_INCLUDE_MODULES_PS_CALLBACKS_H_
 #define LIBPASSION_INCLUDE_MODULES_PS_CALLBACKS_H_
 #include <stdbool.h>
+#include <stdint.h>
 
 #include "../utils/ps_api.h"
 #include "../utils/ps_status.h"
@@ -23,6 +24,14 @@ struct ps_callbacks {
                 bool is_repeat);
         enum ps_status (*keyreleased)(struct ps_passion *this,
                 enum ps_keycode key, enum ps_scancode scancode);
+
+        enum ps_status (*mousepressed)(struct ps_passion *this,
+                uint16_t x, uint16_t y, enum ps_mouse_button button, 
+                bool is_touch);
+
+        enum ps_status (*mousereleased)(struct ps_passion *this,
+                uint16_t x, uint16_t y, enum ps_mouse_button button,
+                bool is_touch);
 
         enum ps_status (*update)(struct ps_passion *this, double dt);
 };

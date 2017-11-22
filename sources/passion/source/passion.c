@@ -18,6 +18,18 @@ enum ps_status keypressed(struct ps_passion *this, enum ps_keycode key,
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status mousereleased(struct ps_passion *this, uint16_t x, uint16_t y,
+        enum ps_mouse_button button, bool is_touch)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+
+        if (button == PS_MOUSE_BUTTON_RIGHT) {
+                ps_event_quit(this);
+        }
+
+        return PS_STATUS_SUCCESS;
+}
+
 int main(int argc, char **argv)
 {        
         struct ps_context ctx = {
@@ -32,6 +44,7 @@ int main(int argc, char **argv)
 
         PS_CALLBACK_SET(passion, load, load);
         PS_CALLBACK_SET(passion, keypressed, keypressed);
+        PS_CALLBACK_SET(passion, mousereleased, mousereleased);
 
         ps_run(passion);
 
