@@ -91,7 +91,17 @@ enum ps_status ps_create_passion(
                 }
         }
 
-        ps_window_set_mode(g_passion, 800, 600, NULL);
+        struct ps_config config;
+        ps_create_default_config(&config);
+
+        if (context->conf) {
+                context->conf(&config);
+        }
+
+        memcpy(&g_passion->config, &config, sizeof(struct ps_config));
+
+        ps_window_set_mode(g_passion, config.window.width, 
+                config.window.height, NULL);
 
         return ps_get_passion(passion);
 }

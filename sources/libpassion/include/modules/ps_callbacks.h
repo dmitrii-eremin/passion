@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "../ps_config.h"
 #include "../utils/ps_api.h"
 #include "../utils/ps_status.h"
 
@@ -13,6 +14,7 @@ struct ps_passion;
 
 struct ps_callbacks {
         enum ps_status (*run)(struct ps_passion *this);
+
         enum ps_status (*draw)(struct ps_passion *this);
         enum ps_status (*load)(struct ps_passion *this, 
                 int argc, char **argv

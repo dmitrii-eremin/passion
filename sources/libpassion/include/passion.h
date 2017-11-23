@@ -15,8 +15,11 @@
 #include "utils/ps_status.h"
 #include "utils/ps_version.h"
 
+#include "ps_config.h"
+
 struct ps_passion {
         struct ps_callbacks callbacks;
+        struct ps_config config;
 
         struct ps_event event;
         struct ps_filesystem filesystem;        

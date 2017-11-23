@@ -84,17 +84,17 @@ enum ps_status ps_window_set_mode(struct ps_passion *this,
         SDL_Window *sdl_window = (SDL_Window*)w->window;
         SDL_GLContext sdl_context = (SDL_GLContext)w->context;
 
-        static struct ps_window_attributes default_attribs = {
-                .fullscreen = false,
-                .fullscreen_type = PS_FULLSCREEN_TYPE_DESKTOP,
-                .display = 0,
+        struct ps_window_attributes default_attribs = {
+                .fullscreen = this->config.window.fullscreen,
+                .fullscreen_type = this->config.window.fullscreen_type,
+                .display = this->config.window.display,
 
-                .x = 0, .y = 0,
+                .x = this->config.window.x, .y = this->config.window.y,
 
-                .centered = true,
-                .resizable = false,
-                .borderless = false,
-                .highdpi = false,
+                .centered = this->config.window.centered,
+                .resizable = this->config.window.resizable,
+                .borderless = this->config.window.borderless,
+                .highdpi = this->config.window.highdpi,
         };
         attribs = attribs ? attribs : &default_attribs;        
 

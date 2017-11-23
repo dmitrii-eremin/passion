@@ -1,5 +1,13 @@
 #include "../include/passion.h"
 
+enum ps_status conf(struct ps_config *t)
+{
+        t->window.width = 1280;
+        t->window.height = 720;
+        t->window.resizable = true;
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status load(struct ps_passion *this, int argc, char **argv)
 {
         return PS_STATUS_SUCCESS;
@@ -35,7 +43,8 @@ int main(int argc, char **argv)
         struct ps_context ctx = {
                 .startup_args = {
                         .argc = argc, .argv = argv
-                }
+                },
+                .conf = conf
         };
 
         struct ps_passion *passion = NULL;

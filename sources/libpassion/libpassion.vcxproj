@@ -189,6 +189,7 @@
     <ClInclude Include="include\modules\window\ps_fullscreen_type.h" />
     <ClInclude Include="include\modules\window\ps_window_attributes.h" />
     <ClInclude Include="include\passion.h" />
+    <ClInclude Include="include\ps_config.h" />
     <ClInclude Include="include\utils\ps_api.h" />
     <ClInclude Include="include\utils\ps_check.h" />
     <ClInclude Include="include\utils\ps_context.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="source\modules\ps_timer.c" />
     <ClCompile Include="source\modules\ps_window.c" />
     <ClCompile Include="source\passion.c" />
+    <ClCompile Include="source\ps_config.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
