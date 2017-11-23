@@ -78,6 +78,11 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
                 evt->mousemoved.is_touch = 
                         sdl->button.which == SDL_TOUCH_MOUSEID;
                 break;
+        case SDL_MOUSEWHEEL:
+                evt->type = PS_EVENT_WHEELMOVED;
+                evt->wheel.dx = (uint16_t)sdl->wheel.x;
+                evt->wheel.dy = (uint16_t)sdl->wheel.y;
+                break;
         default:
                 evt->type = PS_EVENT_UNKNOWN;
                 break;

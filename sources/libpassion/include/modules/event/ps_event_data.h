@@ -41,6 +41,10 @@ struct ps_event_data {
                 uint16_t width;
                 uint16_t height;
         } resize;
+        struct {
+                uint16_t dx;
+                uint16_t dy;
+        } wheel;
 };
 
 #endif

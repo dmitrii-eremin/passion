@@ -47,6 +47,9 @@ enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
                 PS_CALLBACK_RUN(this, resize, 
                         e->resize.width, e->resize.height);
                 break;
+        case PS_EVENT_WHEELMOVED:
+                PS_CALLBACK_RUN(this, wheelmoved, e->wheel.dx, e->wheel.dy);
+                break;
         default:
                 break;
         }
@@ -205,6 +208,12 @@ enum ps_status visible(struct ps_passion *this, bool is_visible)
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status wheelmoved(struct ps_passion *this, uint16_t dx, uint16_t dy)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status ps_callbacks_initialize(struct ps_passion *this)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -223,6 +232,7 @@ enum ps_status ps_callbacks_initialize(struct ps_passion *this)
         PS_CALLBACK_SET(this, resize, resize);
         PS_CALLBACK_SET(this, update, update);
         PS_CALLBACK_SET(this, visible, visible);
+        PS_CALLBACK_SET(this, wheelmoved, wheelmoved);
 
         return PS_STATUS_SUCCESS;
 }

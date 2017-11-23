@@ -19,6 +19,7 @@ enum ps_event_type {
 
         PS_EVENT_RESIZE,
         PS_EVENT_VISIBLE,
+        PS_EVENT_WHEELMOVED,
 
         PS_EVENT_MAX
 };

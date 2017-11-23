@@ -48,6 +48,9 @@ struct ps_callbacks {
         enum ps_status (*update)(struct ps_passion *this, double dt);
 
         enum ps_status (*visible)(struct ps_passion *this, bool is_visible);
+
+        enum ps_status (*wheelmoved)(struct ps_passion *this,
+                uint16_t dx, uint16_t dy);
 };
 
 PS_PRIVATE_API enum ps_status ps_callbacks_initialize(
