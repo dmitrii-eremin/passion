@@ -7,11 +7,18 @@ enum ps_event_type {
 
         PS_EVENT_QUIT,
 
+        PS_EVENT_FOCUS,
+
         PS_EVENT_KEYPRESSED,
         PS_EVENT_KEYRELEASED,
 
+        PS_EVENT_MOUSEFOCUS,
+        PS_EVENT_MOUSEMOVED,
         PS_EVENT_MOUSEPRESSED,
         PS_EVENT_MOUSERELEASED,
+
+        PS_EVENT_RESIZE,
+        PS_EVENT_VISIBLE,
 
         PS_EVENT_MAX
 };

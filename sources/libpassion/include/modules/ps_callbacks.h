@@ -19,11 +19,20 @@ struct ps_callbacks {
         );
         enum ps_status (*quit)(struct ps_passion *this, bool *prevent);
 
+        enum ps_status (*focus)(struct ps_passion *this, bool is_focused);
+
         enum ps_status (*keypressed)(struct ps_passion *this, 
                 enum ps_keycode key, enum ps_scancode scancode, 
                 bool is_repeat);
+
         enum ps_status (*keyreleased)(struct ps_passion *this,
                 enum ps_keycode key, enum ps_scancode scancode);
+
+        enum ps_status (*mousefocus)(struct ps_passion *this, bool is_focused);
+
+        enum ps_status (*mousemoved)(struct ps_passion *this,
+                int16_t x, int16_t y, 
+                int16_t dx, int16_t dy, bool is_touch);
 
         enum ps_status (*mousepressed)(struct ps_passion *this,
                 uint16_t x, uint16_t y, enum ps_mouse_button button, 
@@ -33,7 +42,12 @@ struct ps_callbacks {
                 uint16_t x, uint16_t y, enum ps_mouse_button button,
                 bool is_touch);
 
+        enum ps_status (*resize)(struct ps_passion *this, 
+                uint16_t width, uint16_t height);
+
         enum ps_status (*update)(struct ps_passion *this, double dt);
+
+        enum ps_status (*visible)(struct ps_passion *this, bool is_visible);
 };
 
 PS_PRIVATE_API enum ps_status ps_callbacks_initialize(

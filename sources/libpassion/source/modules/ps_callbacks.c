@@ -28,6 +28,25 @@ enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
                         e->mouse.x, e->mouse.y, e->mouse.button,
                         e->mouse.is_touch);
                 break;
+        case PS_EVENT_MOUSEMOVED:
+                PS_CALLBACK_RUN(this, mousemoved,
+                        e->mousemoved.x, e->mousemoved.y,
+                        e->mousemoved.dx, e->mousemoved.dy,
+                        e->mousemoved.is_touch);
+                break;
+        case PS_EVENT_MOUSEFOCUS:
+                PS_CALLBACK_RUN(this, mousefocus, e->mousefocus.is_focused);
+                break;
+        case PS_EVENT_FOCUS:
+                PS_CALLBACK_RUN(this, focus, e->focus.is_focused);
+                break;
+        case PS_EVENT_VISIBLE:
+                PS_CALLBACK_RUN(this, visible, e->visible.is_visible);
+                break;
+        case PS_EVENT_RESIZE:
+                PS_CALLBACK_RUN(this, resize, 
+                        e->resize.width, e->resize.height);
+                break;
         default:
                 break;
         }
@@ -120,6 +139,12 @@ enum ps_status quit(struct ps_passion *this, bool *prevent)
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status focus(struct ps_passion *this, bool is_focused)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status keypressed(struct ps_passion *this, enum ps_keycode key,
         enum ps_scancode scancode, bool is_repeat)
 {
@@ -129,6 +154,19 @@ enum ps_status keypressed(struct ps_passion *this, enum ps_keycode key,
 
 enum ps_status keyreleased(struct ps_passion *this, enum ps_keycode key,
         enum ps_scancode scancode)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status mousefocus(struct ps_passion *this, bool is_focused)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status mousemoved(struct ps_passion *this, int16_t x, int16_t y,
+        int16_t dx, int16_t dy, bool is_touch)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
         return PS_STATUS_SUCCESS;
@@ -148,10 +186,22 @@ enum ps_status mousereleased(struct ps_passion *this, uint16_t x, uint16_t y,
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status resize(struct ps_passion *this, uint16_t width, uint16_t height)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status update(struct ps_passion *this, double dt)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
 
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status visible(struct ps_passion *this, bool is_visible)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
         return PS_STATUS_SUCCESS;
 }
 
@@ -163,11 +213,16 @@ enum ps_status ps_callbacks_initialize(struct ps_passion *this)
         PS_CALLBACK_SET(this, draw, draw);
         PS_CALLBACK_SET(this, load, load);
         PS_CALLBACK_SET(this, quit, quit);
+        PS_CALLBACK_SET(this, focus, focus);
         PS_CALLBACK_SET(this, keypressed, keypressed);
         PS_CALLBACK_SET(this, keyreleased, keyreleased);
+        PS_CALLBACK_SET(this, mousefocus, mousefocus);
+        PS_CALLBACK_SET(this, mousemoved, mousemoved);
         PS_CALLBACK_SET(this, mousepressed, mousepressed);
         PS_CALLBACK_SET(this, mousereleased, mousereleased);
+        PS_CALLBACK_SET(this, resize, resize);
         PS_CALLBACK_SET(this, update, update);
+        PS_CALLBACK_SET(this, visible, visible);
 
         return PS_STATUS_SUCCESS;
 }

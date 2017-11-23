@@ -21,6 +21,26 @@ struct ps_event_data {
                 enum ps_mouse_button button;
                 bool is_touch;
         } mouse;
+        struct {
+                int16_t x;
+                int16_t y;
+                int16_t dx;
+                int16_t dy;
+                bool is_touch;
+        } mousemoved;
+        struct {
+                bool is_focused;
+        } mousefocus;
+        struct {
+                bool is_visible;
+        } visible;
+        struct {
+                bool is_focused;
+        } focus;
+        struct {
+                uint16_t width;
+                uint16_t height;
+        } resize;
 };
 
 #endif

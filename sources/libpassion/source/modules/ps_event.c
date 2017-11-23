@@ -10,6 +10,39 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
         case SDL_QUIT:
                 evt->type = PS_EVENT_QUIT;
                 break;
+        case SDL_WINDOWEVENT:
+                switch (sdl->window.event) {
+                case SDL_WINDOWEVENT_SHOWN:
+                        evt->type = PS_EVENT_VISIBLE;
+                        evt->visible.is_visible = true;
+                        break;
+                case SDL_WINDOWEVENT_HIDDEN:
+                        evt->type = PS_EVENT_VISIBLE;
+                        evt->visible.is_visible = false;
+                        break;
+                case SDL_WINDOWEVENT_SIZE_CHANGED:
+                        evt->type = PS_EVENT_RESIZE;
+                        evt->resize.width = (uint16_t)sdl->window.data1;
+                        evt->resize.height = (uint16_t)sdl->window.data2;
+                        break;
+                case SDL_WINDOWEVENT_ENTER:
+                        evt->type = PS_EVENT_MOUSEFOCUS;
+                        evt->mousefocus.is_focused = true;
+                        break;
+                case SDL_WINDOWEVENT_LEAVE:
+                        evt->type = PS_EVENT_MOUSEFOCUS;
+                        evt->mousefocus.is_focused = false;
+                        break;
+                case SDL_WINDOWEVENT_FOCUS_GAINED:
+                        evt->type = PS_EVENT_FOCUS;
+                        evt->focus.is_focused = true;
+                        break;
+                case SDL_WINDOWEVENT_FOCUS_LOST:
+                        evt->type = PS_EVENT_FOCUS;
+                        evt->focus.is_focused = false;
+                        break;
+                }
+                break;
         case SDL_KEYDOWN:
                 evt->type = PS_EVENT_KEYPRESSED;
                 evt->key.key = (enum ps_keycode)sdl->key.keysym.sym;
@@ -35,6 +68,15 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
                 evt->mouse.y = (uint16_t)sdl->button.y;
                 evt->mouse.button = (enum ps_mouse_button)sdl->button.button;
                 evt->mouse.is_touch = sdl->button.which == SDL_TOUCH_MOUSEID;
+                break;
+        case SDL_MOUSEMOTION:
+                evt->type = PS_EVENT_MOUSEMOVED;
+                evt->mousemoved.x = (int16_t)sdl->motion.x;
+                evt->mousemoved.y = (int16_t)sdl->motion.y;
+                evt->mousemoved.dx = (int16_t)sdl->motion.xrel;
+                evt->mousemoved.dy = (int16_t)sdl->motion.yrel;
+                evt->mousemoved.is_touch = 
+                        sdl->button.which == SDL_TOUCH_MOUSEID;
                 break;
         default:
                 evt->type = PS_EVENT_UNKNOWN;
