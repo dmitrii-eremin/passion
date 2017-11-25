@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "../touch/ps_touch_id.h"
+#include "../touch/ps_touch_pressure.h"
+
 #include "ps_event_type.h"
 #include "ps_mouse_button.h"
 #include "ps_keycode.h"
@@ -47,12 +50,12 @@ struct ps_event_data {
                         uint16_t dy;
                 } wheel;
                 struct {
-                        int64_t id;
+                        ps_touch_id id;
                         uint16_t x;
                         uint16_t y;
                         uint16_t dx;
                         uint16_t dy;
-                        double pressure;
+                        ps_touch_pressure pressure;
                 } touch;
         } data;
 };

@@ -210,22 +210,25 @@ enum ps_status mousereleased(struct ps_passion *this, uint16_t x, uint16_t y,
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status touchpressed(struct ps_passion *this, int64_t touch_id, 
-        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, double pressure)
+enum ps_status touchpressed(struct ps_passion *this, ps_touch_id touch_id,
+        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy,
+        ps_touch_pressure pressure)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status touchreleased(struct ps_passion *this, int64_t touch_id, 
-        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, double pressure)
+enum ps_status touchreleased(struct ps_passion *this, ps_touch_id touch_id,
+        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, 
+        ps_touch_pressure pressure)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status touchmoved(struct ps_passion *this, int64_t touch_id, 
-        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, double pressure)
+enum ps_status touchmoved(struct ps_passion *this, ps_touch_id touch_id,
+        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, 
+        ps_touch_pressure pressure)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
         return PS_STATUS_SUCCESS;

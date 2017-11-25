@@ -184,8 +184,13 @@
     <ClInclude Include="include\modules\ps_graphics.h" />
     <ClInclude Include="include\modules\ps_math.h" />
     <ClInclude Include="include\modules\ps_timer.h" />
+    <ClInclude Include="include\modules\ps_touch.h" />
     <ClInclude Include="include\modules\ps_window.h" />
     <ClInclude Include="include\modules\timer\ps_time.h" />
+    <ClInclude Include="include\modules\touch\ps_touch_item.h" />
+    <ClInclude Include="include\modules\touch\ps_touch_data.h" />
+    <ClInclude Include="include\modules\touch\ps_touch_id.h" />
+    <ClInclude Include="include\modules\touch\ps_touch_pressure.h" />
     <ClInclude Include="include\modules\window\ps_fullscreen_type.h" />
     <ClInclude Include="include\modules\window\ps_window_attributes.h" />
     <ClInclude Include="include\passion.h" />
@@ -193,6 +198,7 @@
     <ClInclude Include="include\utils\ps_api.h" />
     <ClInclude Include="include\utils\ps_check.h" />
     <ClInclude Include="include\utils\ps_context.h" />
+    <ClInclude Include="include\utils\ps_list.h" />
     <ClInclude Include="include\utils\ps_platform.h" />
     <ClInclude Include="include\utils\ps_status.h" />
     <ClInclude Include="include\utils\ps_version.h" />
@@ -206,7 +212,9 @@
     <ClCompile Include="source\modules\ps_graphics.c" />
     <ClCompile Include="source\modules\ps_math.c" />
     <ClCompile Include="source\modules\ps_timer.c" />
+    <ClCompile Include="source\modules\ps_touch.c" />
     <ClCompile Include="source\modules\ps_window.c" />
+    <ClCompile Include="source\modules\touch\ps_touch_item.c" />
     <ClCompile Include="source\passion.c" />
     <ClCompile Include="source\ps_config.c" />
   </ItemGroup>

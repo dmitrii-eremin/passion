@@ -102,6 +102,24 @@
     <ClInclude Include="include\ps_config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\ps_touch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\touch\ps_touch_id.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\touch\ps_touch_pressure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\touch\ps_touch_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\touch\ps_touch_item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils\ps_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -135,6 +153,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\ps_config.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\ps_touch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\touch\ps_touch_item.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -94,7 +94,7 @@ enum ps_status convert_event(struct ps_passion *this,
                 break;
         case SDL_FINGERDOWN: {
                 evt->type = PS_EVENT_TOUCHPRESSED;
-                evt->data.touch.id = (int64_t)sdl->tfinger.fingerId;
+                evt->data.touch.id = (ps_touch_id)sdl->tfinger.fingerId;
 
                 uint16_t w = 0;
                 uint16_t h = 0;
@@ -105,12 +105,13 @@ enum ps_status convert_event(struct ps_passion *this,
                 evt->data.touch.dx = (uint16_t)(sdl->tfinger.dx * w);
                 evt->data.touch.dy = (uint16_t)(sdl->tfinger.dy * h);
 
-                evt->data.touch.pressure = (double)sdl->tfinger.pressure;
+                evt->data.touch.pressure = 
+                        (ps_touch_pressure)sdl->tfinger.pressure;
         }
         break;
         case SDL_FINGERUP: {
                 evt->type = PS_EVENT_TOUCHRELEASED;
-                evt->data.touch.id = (int64_t)sdl->tfinger.fingerId;
+                evt->data.touch.id = (ps_touch_id)sdl->tfinger.fingerId;
 
                 uint16_t w = 0;
                 uint16_t h = 0;
@@ -121,12 +122,13 @@ enum ps_status convert_event(struct ps_passion *this,
                 evt->data.touch.dx = (uint16_t)(sdl->tfinger.dx * w);
                 evt->data.touch.dy = (uint16_t)(sdl->tfinger.dy * h);
 
-                evt->data.touch.pressure = (double)sdl->tfinger.pressure;
+                evt->data.touch.pressure = 
+                        (ps_touch_pressure)sdl->tfinger.pressure;
         }
         break;
         case SDL_FINGERMOTION: {
                 evt->type = PS_EVENT_TOUCHMOVED;
-                evt->data.touch.id = (int64_t)sdl->tfinger.fingerId;
+                evt->data.touch.id = (ps_touch_id)sdl->tfinger.fingerId;
 
                 uint16_t w = 0;
                 uint16_t h = 0;
@@ -137,7 +139,8 @@ enum ps_status convert_event(struct ps_passion *this,
                 evt->data.touch.dx = (uint16_t)(sdl->tfinger.dx * w);
                 evt->data.touch.dy = (uint16_t)(sdl->tfinger.dy * h);
 
-                evt->data.touch.pressure = (double)sdl->tfinger.pressure;
+                evt->data.touch.pressure = 
+                        (ps_touch_pressure)sdl->tfinger.pressure;
         }
         break;
         default:
@@ -163,6 +166,8 @@ enum ps_status ps_event_deinitialize(struct ps_passion *this)
                 return PS_STATUS_SUCCESS;
         }
 
+        ps_events_list_clear(&this->event.events);
+
         return PS_STATUS_SUCCESS;
 }
 
@@ -185,7 +190,7 @@ enum ps_status ps_event_poll(struct ps_passion *this,
         PS_CHECK(this && event, PS_STATUS_INVALID_ARGUMENT);
 
         if (this->event.events) {
-                ps_events_list_pop(&this->event.events, event);
+                ps_events_list_pop_front(&this->event.events, event);
         } else {
                 event->type = PS_EVENT_BREAK_POLLING;
         }        
@@ -213,7 +218,7 @@ enum ps_status ps_event_push(struct ps_passion *this,
 {
         PS_CHECK(this && event, PS_STATUS_INVALID_ARGUMENT);
 
-        ps_events_list_push(&this->event.events, event);
+        ps_events_list_push_back(&this->event.events, event);
         return PS_STATUS_SUCCESS;
 }
 

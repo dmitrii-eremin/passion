@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "touch/ps_touch_id.h"
+#include "touch/ps_touch_pressure.h"
+
 #include "../ps_config.h"
 #include "../utils/ps_api.h"
 #include "../utils/ps_status.h"
@@ -45,16 +48,16 @@ struct ps_callbacks {
                 bool is_touch);
 
         enum ps_status (*touchpressed)(struct ps_passion *this,
-                int64_t touch_id, uint16_t x, uint16_t y,
-                uint16_t dx, uint16_t dy, double pressure);
+                ps_touch_id touch_id, uint16_t x, uint16_t y,
+                uint16_t dx, uint16_t dy, ps_touch_pressure pressure);
 
         enum ps_status (*touchreleased)(struct ps_passion *this,
-                int64_t touch_id, uint16_t x, uint16_t y,
-                uint16_t dx, uint16_t dy, double pressure);
+                ps_touch_id touch_id, uint16_t x, uint16_t y,
+                uint16_t dx, uint16_t dy, ps_touch_pressure pressure);
 
         enum ps_status (*touchmoved)(struct ps_passion *this,
-                int64_t touch_id, uint16_t x, uint16_t y,
-                uint16_t dx, uint16_t dy, double pressure);
+                ps_touch_id touch_id, uint16_t x, uint16_t y,
+                uint16_t dx, uint16_t dy, ps_touch_pressure pressure);
 
         enum ps_status (*resize)(struct ps_passion *this, 
                 uint16_t width, uint16_t height);

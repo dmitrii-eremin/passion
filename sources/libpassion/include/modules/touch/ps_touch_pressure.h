@@ -1,0 +1,6 @@
+#ifndef LIBPASSION_INCLUDE_MODULES_TOUCH_PS_TOUCH_PRESSURE_H_
+#define LIBPASSION_INCLUDE_MODULES_TOUCH_PS_TOUCH_PRESSURE_H_
+
+typedef double ps_touch_pressure;
+
+#endif

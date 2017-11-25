@@ -78,8 +78,21 @@ enum ps_status ps_create_passion(
                         return status;
                 }
 
+                status = ps_touch_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_timer_deinitialize(g_passion);
+                        ps_math_deinitialize(g_passion);
+                        ps_graphics_deinitialize(g_passion);
+                        ps_filesystem_deinitialize(g_passion);
+                        ps_event_deinitialize(g_passion);
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
                 status = ps_window_initialize(g_passion);
                 if (PS_STATUS_FAILED(status)) {
+                        ps_touch_deinitialize(g_passion);
                         ps_timer_deinitialize(g_passion);
                         ps_math_deinitialize(g_passion);
                         ps_graphics_deinitialize(g_passion);
@@ -130,6 +143,8 @@ enum ps_status ps_release_passion(struct ps_passion *passion)
 
         if (passion->ref_count == 0) {
                 ps_window_deinitialize(g_passion);
+                ps_touch_deinitialize(g_passion);
+                ps_timer_deinitialize(g_passion);
                 ps_math_deinitialize(g_passion);
                 ps_graphics_deinitialize(g_passion);
                 ps_filesystem_deinitialize(g_passion);
