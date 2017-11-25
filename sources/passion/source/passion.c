@@ -23,6 +23,7 @@ enum ps_status keypressed(struct ps_passion *this, enum ps_keycode key,
         if (scancode == PS_SCANCODE_SPACE) {
                 ps_graphics_set_background_color(this, 1, 0, 0, 1);
         }
+
         return PS_STATUS_SUCCESS;
 }
 

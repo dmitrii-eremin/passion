@@ -25,6 +25,21 @@ enum ps_status ps_touch_get_position(struct ps_passion *this,
 )
 {
         PS_CHECK(this && (x || y), PS_STATUS_INVALID_ARGUMENT);
+
+        struct ps_touch_data item_to_find = { .id = id, 0 };
+        
+        struct ps_touch_data *item = NULL;
+        PS_STATUS_ASSERT(ps_touch_list_find(&this->touch.touches, &item,
+                &item_to_find, ps_touch_item_comparator));
+
+        if (!item)
+                return PS_STATUS_NOT_FOUND;
+
+        if (x)
+                *x = item->x;
+        if (y)
+                *y = item->y;
+
         return PS_STATUS_SUCCESS;
 }
 
@@ -33,6 +48,18 @@ enum ps_status ps_touch_get_pressure(struct ps_passion *this,
 )
 {
         PS_CHECK(this && pressure, PS_STATUS_INVALID_ARGUMENT);
+
+        struct ps_touch_data item_to_find = { .id = id, 0 };
+
+        struct ps_touch_data *item = NULL;
+        PS_STATUS_ASSERT(ps_touch_list_find(&this->touch.touches, &item,
+                &item_to_find, ps_touch_item_comparator));
+
+        if (!item)
+                return PS_STATUS_NOT_FOUND;
+
+        *pressure = item->pressure;
+
         return PS_STATUS_SUCCESS;
 }
 
@@ -41,6 +68,18 @@ enum ps_status ps_touch_get_touches(struct ps_passion *this,
 )
 {
         PS_CHECK(this && touches && count, PS_STATUS_INVALID_ARGUMENT);
+
+        struct ps_touch_item *head = this->touch.touches;
+
+        uint32_t i = 0;
+        while (i < *count && head) {
+                touches[i] = head->data.id;
+
+                head = head->next;
+                i++;
+        }
+
+        *count = i;
 
         return PS_STATUS_SUCCESS;
 }
