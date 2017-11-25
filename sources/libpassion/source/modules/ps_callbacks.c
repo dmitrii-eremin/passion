@@ -34,6 +34,21 @@ enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
                         e->mousemoved.dx, e->mousemoved.dy,
                         e->mousemoved.is_touch);
                 break;
+        case PS_EVENT_TOUCHPRESSED:
+                PS_CALLBACK_RUN(this, touchpressed,
+                        e->touch.id, e->touch.x, e->touch.y,
+                        e->touch.dx, e->touch.dy, e->touch.pressure);
+                break;
+        case PS_EVENT_TOUCHRELEASED:
+                PS_CALLBACK_RUN(this, touchreleased,
+                        e->touch.id, e->touch.x, e->touch.y,
+                        e->touch.dx, e->touch.dy, e->touch.pressure);
+                break;
+        case PS_EVENT_TOUCHMOVED:
+                PS_CALLBACK_RUN(this, touchmoved,
+                        e->touch.id, e->touch.x, e->touch.y,
+                        e->touch.dx, e->touch.dy, e->touch.pressure);
+                break;
         case PS_EVENT_MOUSEFOCUS:
                 PS_CALLBACK_RUN(this, mousefocus, e->mousefocus.is_focused);
                 break;
@@ -189,6 +204,27 @@ enum ps_status mousereleased(struct ps_passion *this, uint16_t x, uint16_t y,
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status touchpressed(struct ps_passion *this, int64_t touch_id, 
+        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, double pressure)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status touchreleased(struct ps_passion *this, int64_t touch_id, 
+        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, double pressure)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status touchmoved(struct ps_passion *this, int64_t touch_id, 
+        uint16_t x, uint16_t y, uint16_t dx, uint16_t dy, double pressure)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status resize(struct ps_passion *this, uint16_t width, uint16_t height)
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -229,6 +265,9 @@ enum ps_status ps_callbacks_initialize(struct ps_passion *this)
         PS_CALLBACK_SET(this, mousemoved, mousemoved);
         PS_CALLBACK_SET(this, mousepressed, mousepressed);
         PS_CALLBACK_SET(this, mousereleased, mousereleased);
+        PS_CALLBACK_SET(this, touchpressed, touchpressed);
+        PS_CALLBACK_SET(this, touchreleased, touchreleased);
+        PS_CALLBACK_SET(this, touchmoved, touchmoved);
         PS_CALLBACK_SET(this, resize, resize);
         PS_CALLBACK_SET(this, update, update);
         PS_CALLBACK_SET(this, visible, visible);

@@ -45,6 +45,14 @@ struct ps_event_data {
                 uint16_t dx;
                 uint16_t dy;
         } wheel;
+        struct {
+                int64_t id;
+                uint16_t x;
+                uint16_t y;
+                uint16_t dx;
+                uint16_t dy;
+                double pressure;
+        } touch;
 };
 
 #endif

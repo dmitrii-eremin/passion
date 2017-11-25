@@ -37,6 +37,22 @@ PS_PUBLIC_API enum ps_status ps_graphics_get_color(
         struct ps_color *color
 );
 
+PS_PUBLIC_API enum ps_status ps_graphics_get_dimensions(
+        struct ps_passion *this,
+        uint16_t *width,
+        uint16_t *height
+);
+
+PS_PUBLIC_API enum ps_status ps_graphics_get_height(
+        struct ps_passion *this,
+        uint16_t *height
+);
+
+PS_PUBLIC_API enum ps_status ps_graphics_get_width(
+        struct ps_passion *this,
+        uint16_t *width
+);
+
 PS_PUBLIC_API enum ps_status ps_graphics_is_active(
         struct ps_passion *this,
         bool *active

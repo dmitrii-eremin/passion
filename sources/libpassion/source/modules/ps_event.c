@@ -2,7 +2,8 @@
 
 #include <passion.h>
 
-enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
+enum ps_status convert_event(struct ps_passion *this, 
+        SDL_Event *sdl, struct ps_event_data *evt)
 {
         PS_CHECK(sdl && evt, PS_STATUS_INVALID_ARGUMENT);
         SDL_BUTTON_LEFT;
@@ -83,6 +84,54 @@ enum ps_status convert_event(SDL_Event *sdl, struct ps_event_data *evt)
                 evt->wheel.dx = (uint16_t)sdl->wheel.x;
                 evt->wheel.dy = (uint16_t)sdl->wheel.y;
                 break;
+        case SDL_FINGERDOWN: {
+                evt->type = PS_EVENT_TOUCHPRESSED;
+                evt->touch.id = (int64_t)sdl->tfinger.fingerId;
+
+                uint16_t w = 0;
+                uint16_t h = 0;
+                PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &w, &h));
+
+                evt->touch.x = (uint16_t)(sdl->tfinger.x * w);
+                evt->touch.y = (uint16_t)(sdl->tfinger.y * h);
+                evt->touch.dx = (uint16_t)(sdl->tfinger.dx * w);
+                evt->touch.dy = (uint16_t)(sdl->tfinger.dy * h);
+
+                evt->touch.pressure = (double)sdl->tfinger.pressure;
+        }
+        break;
+        case SDL_FINGERUP: {
+                evt->type = PS_EVENT_TOUCHRELEASED;
+                evt->touch.id = (int64_t)sdl->tfinger.fingerId;
+
+                uint16_t w = 0;
+                uint16_t h = 0;
+                PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &w, &h));
+
+                evt->touch.x = (uint16_t)(sdl->tfinger.x * w);
+                evt->touch.y = (uint16_t)(sdl->tfinger.y * h);
+                evt->touch.dx = (uint16_t)(sdl->tfinger.dx * w);
+                evt->touch.dy = (uint16_t)(sdl->tfinger.dy * h);
+
+                evt->touch.pressure = (double)sdl->tfinger.pressure;
+        }
+        break;
+        case SDL_FINGERMOTION: {
+                evt->type = PS_EVENT_TOUCHMOVED;
+                evt->touch.id = (int64_t)sdl->tfinger.fingerId;
+
+                uint16_t w = 0;
+                uint16_t h = 0;
+                PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &w, &h));
+
+                evt->touch.x = (uint16_t)(sdl->tfinger.x * w);
+                evt->touch.y = (uint16_t)(sdl->tfinger.y * h);
+                evt->touch.dx = (uint16_t)(sdl->tfinger.dx * w);
+                evt->touch.dy = (uint16_t)(sdl->tfinger.dy * h);
+
+                evt->touch.pressure = (double)sdl->tfinger.pressure;
+        }
+        break;
         default:
                 evt->type = PS_EVENT_UNKNOWN;
                 break;
@@ -143,7 +192,7 @@ enum ps_status ps_event_pump(struct ps_passion *this)
         SDL_Event sdl_event = { 0 };
         while (SDL_PollEvent(&sdl_event)) {
                 struct ps_event_data event = { 0 };
-                PS_STATUS_ASSERT(convert_event(&sdl_event, &event));
+                PS_STATUS_ASSERT(convert_event(this, &sdl_event, &event));
                 PS_STATUS_ASSERT(ps_event_push(this, &event));
         }
 
@@ -181,5 +230,5 @@ enum ps_status ps_event_wait(struct ps_passion *this,
                 return PS_STATUS_UNKNOWN_ERROR;
         }
 
-        return convert_event(&sdl_event, *event);
+        return convert_event(this, &sdl_event, *event);
 }
