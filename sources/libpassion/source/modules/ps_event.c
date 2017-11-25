@@ -2,6 +2,72 @@
 
 #include <passion.h>
 
+enum ps_status on_event(struct ps_passion *this, SDL_Event *event)
+{
+        PS_CHECK(this && event, PS_STATUS_INVALID_ARGUMENT);
+
+        uint16_t scr_w = 0;
+        uint16_t scr_h = 0;
+        PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &scr_w, &scr_h));
+
+        switch (event->type) {
+        case SDL_FINGERDOWN: 
+        case SDL_FINGERUP:
+        case SDL_FINGERMOTION: {
+                ps_touch_id id = (ps_touch_id)event->tfinger.fingerId;
+                ps_touch_pressure pressure = 
+                        (ps_touch_pressure)event->tfinger.pressure;
+                uint16_t x = (uint16_t)(event->tfinger.x * scr_w);
+                uint16_t y = (uint16_t)(event->tfinger.y * scr_h);
+
+                struct ps_touch_data touch_data = {
+                        .id = id,.x = x,.y = y,
+                        .pressure = pressure
+                };
+
+                if (event->type == SDL_FINGERDOWN) {
+                        PS_STATUS_ASSERT(
+                                ps_touch_list_push_back(
+                                        &this->touch.touches, &touch_data
+                                )
+                        );
+                } else if (event->type == SDL_FINGERMOTION) {
+                        struct ps_touch_data *item = NULL;
+                        PS_STATUS_ASSERT(
+                                ps_touch_list_find(
+                                        &this->touch.touches, &item,
+                                        &touch_data, ps_touch_item_comparator
+                                )
+                        );
+                        if (item) {
+                                memcpy(item, &touch_data, 
+                                        sizeof(struct ps_touch_data));
+                        }
+                } else if (event->type == SDL_FINGERUP) {
+                        struct ps_touch_data *item = NULL;
+                        PS_STATUS_ASSERT(
+                                ps_touch_list_find(
+                                        &this->touch.touches, &item,
+                                        &touch_data, ps_touch_item_comparator
+                                )
+                        );
+                        if (item) {
+                                PS_STATUS_ASSERT(
+                                        ps_touch_list_remove(
+                                                &this->touch.touches, item
+                                        )
+                                );
+                        }
+                }
+        }
+        break;
+        default:
+                break;
+        }
+
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status convert_event(struct ps_passion *this, 
         SDL_Event *sdl, struct ps_event_data *evt)
 {
@@ -207,6 +273,8 @@ enum ps_status ps_event_pump(struct ps_passion *this)
                 struct ps_event_data event = { 0 };
                 PS_STATUS_ASSERT(convert_event(this, &sdl_event, &event));
                 PS_STATUS_ASSERT(ps_event_push(this, &event));
+
+                on_event(this, &sdl_event);
         }
 
         return PS_STATUS_SUCCESS;

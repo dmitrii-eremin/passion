@@ -142,7 +142,7 @@ enum ps_status NAME##_remove(struct ITEM **list, \
                 head = head->next; \
         } \
         if (!head) \
-                return PS_STATUS_NOT_FOUND; \
+                return PS_STATUS_SUCCESS; \
 \
         if (!prev) { \
                 *list = head->next; \

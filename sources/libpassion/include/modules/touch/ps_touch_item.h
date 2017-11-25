@@ -12,4 +12,9 @@ PS_DEFINE_LIST(
         PS_PRIVATE_API
 );
 
+PS_PRIVATE_API bool ps_touch_item_comparator(
+        struct ps_touch_data *item,
+        void *userdata
+);
+
 #endif

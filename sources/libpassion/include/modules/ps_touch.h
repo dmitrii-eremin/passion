@@ -11,7 +11,7 @@
 #include "touch/ps_touch_pressure.h"
 
 struct ps_touch {
-        struct ps_touch_list *touches;
+        struct ps_touch_item *touches;
 };
 
 PS_PRIVATE_API enum ps_status ps_touch_initialize(
