@@ -12,58 +12,64 @@ enum ps_status process_event(struct ps_passion *this, struct ps_event_data *e)
                 break;     
         case PS_EVENT_KEYPRESSED:
                 PS_CALLBACK_RUN(this, keypressed, 
-                        e->key.key, e->key.scancode, e->key.is_repeat);
+                        e->data.key.key, e->data.key.scancode, 
+                        e->data.key.is_repeat);
                 break;
         case PS_EVENT_KEYRELEASED:
                 PS_CALLBACK_RUN(this, keyreleased, 
-                        e->key.key, e->key.scancode);
+                        e->data.key.key, e->data.key.scancode);
                 break;
         case PS_EVENT_MOUSEPRESSED:
                 PS_CALLBACK_RUN(this, mousepressed,
-                        e->mouse.x, e->mouse.y, e->mouse.button, 
-                        e->mouse.is_touch);
+                        e->data.mouse.x, e->data.mouse.y, e->data.mouse.button,
+                        e->data.mouse.is_touch);
                 break;
         case PS_EVENT_MOUSERELEASED:
                 PS_CALLBACK_RUN(this, mousereleased,
-                        e->mouse.x, e->mouse.y, e->mouse.button,
-                        e->mouse.is_touch);
+                        e->data.mouse.x, e->data.mouse.y, e->data.mouse.button,
+                        e->data.mouse.is_touch);
                 break;
         case PS_EVENT_MOUSEMOVED:
                 PS_CALLBACK_RUN(this, mousemoved,
-                        e->mousemoved.x, e->mousemoved.y,
-                        e->mousemoved.dx, e->mousemoved.dy,
-                        e->mousemoved.is_touch);
+                        e->data.mousemoved.x, e->data.mousemoved.y,
+                        e->data.mousemoved.dx, e->data.mousemoved.dy,
+                        e->data.mousemoved.is_touch);
                 break;
         case PS_EVENT_TOUCHPRESSED:
                 PS_CALLBACK_RUN(this, touchpressed,
-                        e->touch.id, e->touch.x, e->touch.y,
-                        e->touch.dx, e->touch.dy, e->touch.pressure);
+                        e->data.touch.id, e->data.touch.x, e->data.touch.y,
+                        e->data.touch.dx, e->data.touch.dy, 
+                        e->data.touch.pressure);
                 break;
         case PS_EVENT_TOUCHRELEASED:
                 PS_CALLBACK_RUN(this, touchreleased,
-                        e->touch.id, e->touch.x, e->touch.y,
-                        e->touch.dx, e->touch.dy, e->touch.pressure);
+                        e->data.touch.id, e->data.touch.x, e->data.touch.y,
+                        e->data.touch.dx, e->data.touch.dy, 
+                        e->data.touch.pressure);
                 break;
         case PS_EVENT_TOUCHMOVED:
                 PS_CALLBACK_RUN(this, touchmoved,
-                        e->touch.id, e->touch.x, e->touch.y,
-                        e->touch.dx, e->touch.dy, e->touch.pressure);
+                        e->data.touch.id, e->data.touch.x, e->data.touch.y,
+                        e->data.touch.dx, e->data.touch.dy, 
+                        e->data.touch.pressure);
                 break;
         case PS_EVENT_MOUSEFOCUS:
-                PS_CALLBACK_RUN(this, mousefocus, e->mousefocus.is_focused);
+                PS_CALLBACK_RUN(this, mousefocus, 
+                        e->data.mousefocus.is_focused);
                 break;
         case PS_EVENT_FOCUS:
-                PS_CALLBACK_RUN(this, focus, e->focus.is_focused);
+                PS_CALLBACK_RUN(this, focus, e->data.focus.is_focused);
                 break;
         case PS_EVENT_VISIBLE:
-                PS_CALLBACK_RUN(this, visible, e->visible.is_visible);
+                PS_CALLBACK_RUN(this, visible, e->data.visible.is_visible);
                 break;
         case PS_EVENT_RESIZE:
                 PS_CALLBACK_RUN(this, resize, 
-                        e->resize.width, e->resize.height);
+                        e->data.resize.width, e->data.resize.height);
                 break;
         case PS_EVENT_WHEELMOVED:
-                PS_CALLBACK_RUN(this, wheelmoved, e->wheel.dx, e->wheel.dy);
+                PS_CALLBACK_RUN(this, wheelmoved, 
+                        e->data.wheel.dx, e->data.wheel.dy);
                 break;
         default:
                 break;

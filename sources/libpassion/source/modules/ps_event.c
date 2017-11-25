@@ -15,121 +15,129 @@ enum ps_status convert_event(struct ps_passion *this,
                 switch (sdl->window.event) {
                 case SDL_WINDOWEVENT_SHOWN:
                         evt->type = PS_EVENT_VISIBLE;
-                        evt->visible.is_visible = true;
+                        evt->data.visible.is_visible = true;
                         break;
                 case SDL_WINDOWEVENT_HIDDEN:
                         evt->type = PS_EVENT_VISIBLE;
-                        evt->visible.is_visible = false;
+                        evt->data.visible.is_visible = false;
                         break;
                 case SDL_WINDOWEVENT_SIZE_CHANGED:
                         evt->type = PS_EVENT_RESIZE;
-                        evt->resize.width = (uint16_t)sdl->window.data1;
-                        evt->resize.height = (uint16_t)sdl->window.data2;
+                        evt->data.resize.width = (uint16_t)sdl->window.data1;
+                        evt->data.resize.height = (uint16_t)sdl->window.data2;
                         break;
                 case SDL_WINDOWEVENT_ENTER:
                         evt->type = PS_EVENT_MOUSEFOCUS;
-                        evt->mousefocus.is_focused = true;
+                        evt->data.mousefocus.is_focused = true;
                         break;
                 case SDL_WINDOWEVENT_LEAVE:
                         evt->type = PS_EVENT_MOUSEFOCUS;
-                        evt->mousefocus.is_focused = false;
+                        evt->data.mousefocus.is_focused = false;
                         break;
                 case SDL_WINDOWEVENT_FOCUS_GAINED:
                         evt->type = PS_EVENT_FOCUS;
-                        evt->focus.is_focused = true;
+                        evt->data.focus.is_focused = true;
                         break;
                 case SDL_WINDOWEVENT_FOCUS_LOST:
                         evt->type = PS_EVENT_FOCUS;
-                        evt->focus.is_focused = false;
+                        evt->data.focus.is_focused = false;
                         break;
                 }
                 break;
         case SDL_KEYDOWN:
                 evt->type = PS_EVENT_KEYPRESSED;
-                evt->key.key = (enum ps_keycode)sdl->key.keysym.sym;
-                evt->key.scancode = (enum ps_scancode)sdl->key.keysym.scancode;
-                evt->key.is_repeat = false;
+                evt->data.key.key = 
+                        (enum ps_keycode)sdl->key.keysym.sym;
+                evt->data.key.scancode = 
+                        (enum ps_scancode)sdl->key.keysym.scancode;
+                evt->data.key.is_repeat = false;
                 break;
         case SDL_KEYUP:
                 evt->type = PS_EVENT_KEYRELEASED;
-                evt->key.key = (enum ps_keycode)sdl->key.keysym.sym;
-                evt->key.scancode = (enum ps_scancode)sdl->key.keysym.scancode;
-                evt->key.is_repeat = false;
+                evt->data.key.key = 
+                        (enum ps_keycode)sdl->key.keysym.sym;
+                evt->data.key.scancode = 
+                        (enum ps_scancode)sdl->key.keysym.scancode;
+                evt->data.key.is_repeat = false;
                 break;
         case SDL_MOUSEBUTTONDOWN:
                 evt->type = PS_EVENT_MOUSEPRESSED;
-                evt->mouse.x = (uint16_t)sdl->button.x;
-                evt->mouse.y = (uint16_t)sdl->button.y;
-                evt->mouse.button = (enum ps_mouse_button)sdl->button.button;
-                evt->mouse.is_touch = sdl->button.which == SDL_TOUCH_MOUSEID;
+                evt->data.mouse.x = (uint16_t)sdl->button.x;
+                evt->data.mouse.y = (uint16_t)sdl->button.y;
+                evt->data.mouse.button = 
+                        (enum ps_mouse_button)sdl->button.button;
+                evt->data.mouse.is_touch = 
+                        sdl->button.which == SDL_TOUCH_MOUSEID;
                 break;
         case SDL_MOUSEBUTTONUP:
                 evt->type = PS_EVENT_MOUSERELEASED;
-                evt->mouse.x = (uint16_t)sdl->button.x;
-                evt->mouse.y = (uint16_t)sdl->button.y;
-                evt->mouse.button = (enum ps_mouse_button)sdl->button.button;
-                evt->mouse.is_touch = sdl->button.which == SDL_TOUCH_MOUSEID;
+                evt->data.mouse.x = (uint16_t)sdl->button.x;
+                evt->data.mouse.y = (uint16_t)sdl->button.y;
+                evt->data.mouse.button = 
+                        (enum ps_mouse_button)sdl->button.button;
+                evt->data.mouse.is_touch = 
+                        sdl->button.which == SDL_TOUCH_MOUSEID;
                 break;
         case SDL_MOUSEMOTION:
                 evt->type = PS_EVENT_MOUSEMOVED;
-                evt->mousemoved.x = (int16_t)sdl->motion.x;
-                evt->mousemoved.y = (int16_t)sdl->motion.y;
-                evt->mousemoved.dx = (int16_t)sdl->motion.xrel;
-                evt->mousemoved.dy = (int16_t)sdl->motion.yrel;
-                evt->mousemoved.is_touch = 
+                evt->data.mousemoved.x = (int16_t)sdl->motion.x;
+                evt->data.mousemoved.y = (int16_t)sdl->motion.y;
+                evt->data.mousemoved.dx = (int16_t)sdl->motion.xrel;
+                evt->data.mousemoved.dy = (int16_t)sdl->motion.yrel;
+                evt->data.mousemoved.is_touch =
                         sdl->button.which == SDL_TOUCH_MOUSEID;
                 break;
         case SDL_MOUSEWHEEL:
                 evt->type = PS_EVENT_WHEELMOVED;
-                evt->wheel.dx = (uint16_t)sdl->wheel.x;
-                evt->wheel.dy = (uint16_t)sdl->wheel.y;
+                evt->data.wheel.dx = (uint16_t)sdl->wheel.x;
+                evt->data.wheel.dy = (uint16_t)sdl->wheel.y;
                 break;
         case SDL_FINGERDOWN: {
                 evt->type = PS_EVENT_TOUCHPRESSED;
-                evt->touch.id = (int64_t)sdl->tfinger.fingerId;
+                evt->data.touch.id = (int64_t)sdl->tfinger.fingerId;
 
                 uint16_t w = 0;
                 uint16_t h = 0;
                 PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &w, &h));
 
-                evt->touch.x = (uint16_t)(sdl->tfinger.x * w);
-                evt->touch.y = (uint16_t)(sdl->tfinger.y * h);
-                evt->touch.dx = (uint16_t)(sdl->tfinger.dx * w);
-                evt->touch.dy = (uint16_t)(sdl->tfinger.dy * h);
+                evt->data.touch.x = (uint16_t)(sdl->tfinger.x * w);
+                evt->data.touch.y = (uint16_t)(sdl->tfinger.y * h);
+                evt->data.touch.dx = (uint16_t)(sdl->tfinger.dx * w);
+                evt->data.touch.dy = (uint16_t)(sdl->tfinger.dy * h);
 
-                evt->touch.pressure = (double)sdl->tfinger.pressure;
+                evt->data.touch.pressure = (double)sdl->tfinger.pressure;
         }
         break;
         case SDL_FINGERUP: {
                 evt->type = PS_EVENT_TOUCHRELEASED;
-                evt->touch.id = (int64_t)sdl->tfinger.fingerId;
+                evt->data.touch.id = (int64_t)sdl->tfinger.fingerId;
 
                 uint16_t w = 0;
                 uint16_t h = 0;
                 PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &w, &h));
 
-                evt->touch.x = (uint16_t)(sdl->tfinger.x * w);
-                evt->touch.y = (uint16_t)(sdl->tfinger.y * h);
-                evt->touch.dx = (uint16_t)(sdl->tfinger.dx * w);
-                evt->touch.dy = (uint16_t)(sdl->tfinger.dy * h);
+                evt->data.touch.x = (uint16_t)(sdl->tfinger.x * w);
+                evt->data.touch.y = (uint16_t)(sdl->tfinger.y * h);
+                evt->data.touch.dx = (uint16_t)(sdl->tfinger.dx * w);
+                evt->data.touch.dy = (uint16_t)(sdl->tfinger.dy * h);
 
-                evt->touch.pressure = (double)sdl->tfinger.pressure;
+                evt->data.touch.pressure = (double)sdl->tfinger.pressure;
         }
         break;
         case SDL_FINGERMOTION: {
                 evt->type = PS_EVENT_TOUCHMOVED;
-                evt->touch.id = (int64_t)sdl->tfinger.fingerId;
+                evt->data.touch.id = (int64_t)sdl->tfinger.fingerId;
 
                 uint16_t w = 0;
                 uint16_t h = 0;
                 PS_STATUS_ASSERT(ps_graphics_get_dimensions(this, &w, &h));
 
-                evt->touch.x = (uint16_t)(sdl->tfinger.x * w);
-                evt->touch.y = (uint16_t)(sdl->tfinger.y * h);
-                evt->touch.dx = (uint16_t)(sdl->tfinger.dx * w);
-                evt->touch.dy = (uint16_t)(sdl->tfinger.dy * h);
+                evt->data.touch.x = (uint16_t)(sdl->tfinger.x * w);
+                evt->data.touch.y = (uint16_t)(sdl->tfinger.y * h);
+                evt->data.touch.dx = (uint16_t)(sdl->tfinger.dx * w);
+                evt->data.touch.dy = (uint16_t)(sdl->tfinger.dy * h);
 
-                evt->touch.pressure = (double)sdl->tfinger.pressure;
+                evt->data.touch.pressure = (double)sdl->tfinger.pressure;
         }
         break;
         default:
