@@ -61,6 +61,23 @@ enum ps_status NAME##_clear(struct ITEM **list) \
         return PS_STATUS_SUCCESS; \
 } \
 \
+enum ps_status NAME##_push_front(struct ITEM **list, \
+        DATA *element \
+) \
+{ \
+        PS_CHECK(list && element, PS_STATUS_INVALID_ARGUMENT); \
+\
+        struct ITEM *head = *list; \
+\
+        struct ITEM *new_head = malloc(sizeof(struct ITEM)); \
+        memcpy(new_head, element, sizeof(DATA)); \
+        new_head->next = head; \
+\
+        *list = new_head; \
+\
+        return PS_STATUS_SUCCESS; \
+} \
+\
 enum ps_status NAME##_push_back(struct ITEM **list, \
         DATA *element \
 ) \
