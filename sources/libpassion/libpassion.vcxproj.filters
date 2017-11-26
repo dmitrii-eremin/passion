@@ -90,15 +90,6 @@
     <ClInclude Include="include\modules\window\ps_fullscreen_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\modules\event\ps_scancode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\modules\event\ps_keycode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\modules\event\ps_mouse_button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\ps_config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -124,6 +115,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\modules\ps_mouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\keyboard\ps_keycode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\keyboard\ps_scancode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\mouse\ps_mouse_button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

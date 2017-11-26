@@ -5,8 +5,8 @@
 
 #include "event/ps_event_data.h"
 #include "event/ps_event_item.h"
-#include "event/ps_keycode.h"
-#include "event/ps_scancode.h"
+#include "keyboard/ps_keycode.h"
+#include "keyboard/ps_scancode.h"
 
 struct ps_passion;
 

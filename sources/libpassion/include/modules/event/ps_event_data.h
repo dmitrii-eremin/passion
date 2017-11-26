@@ -7,9 +7,9 @@
 #include "../touch/ps_touch_pressure.h"
 
 #include "ps_event_type.h"
-#include "ps_mouse_button.h"
-#include "ps_keycode.h"
-#include "ps_scancode.h"
+#include "../mouse/ps_mouse_button.h"
+#include "../keyboard/ps_keycode.h"
+#include "../keyboard/ps_scancode.h"
 
 struct ps_event_data {
         enum ps_event_type type;
