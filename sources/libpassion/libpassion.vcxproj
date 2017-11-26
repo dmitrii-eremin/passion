@@ -182,7 +182,9 @@
     <ClInclude Include="include\modules\ps_event.h" />
     <ClInclude Include="include\modules\ps_filesystem.h" />
     <ClInclude Include="include\modules\ps_graphics.h" />
+    <ClInclude Include="include\modules\ps_keyboard.h" />
     <ClInclude Include="include\modules\ps_math.h" />
+    <ClInclude Include="include\modules\ps_mouse.h" />
     <ClInclude Include="include\modules\ps_timer.h" />
     <ClInclude Include="include\modules\ps_touch.h" />
     <ClInclude Include="include\modules\ps_window.h" />
@@ -210,7 +212,9 @@
     <ClCompile Include="source\modules\ps_event.c" />
     <ClCompile Include="source\modules\ps_filesystem.c" />
     <ClCompile Include="source\modules\ps_graphics.c" />
+    <ClCompile Include="source\modules\ps_keyboard.c" />
     <ClCompile Include="source\modules\ps_math.c" />
+    <ClCompile Include="source\modules\ps_mouse.c" />
     <ClCompile Include="source\modules\ps_timer.c" />
     <ClCompile Include="source\modules\ps_touch.c" />
     <ClCompile Include="source\modules\ps_window.c" />

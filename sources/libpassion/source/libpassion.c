@@ -57,8 +57,30 @@ enum ps_status ps_create_passion(
                         return status;
                 }
 
+                status = ps_keyboard_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_graphics_deinitialize(g_passion);
+                        ps_filesystem_deinitialize(g_passion);
+                        ps_event_deinitialize(g_passion);
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
                 status = ps_math_initialize(g_passion);
                 if (PS_STATUS_FAILED(status)) {
+                        ps_keyboard_deinitialize(g_passion);
+                        ps_graphics_deinitialize(g_passion);
+                        ps_filesystem_deinitialize(g_passion);
+                        ps_event_deinitialize(g_passion);
+                        ps_callbacks_deinitialize(g_passion);
+                        free(g_passion);
+                        return status;
+                }
+
+                status = ps_mouse_initialize(g_passion);
+                if (PS_STATUS_FAILED(status)) {
+                        ps_math_deinitialize(g_passion);
                         ps_graphics_deinitialize(g_passion);
                         ps_filesystem_deinitialize(g_passion);
                         ps_event_deinitialize(g_passion);
@@ -69,6 +91,7 @@ enum ps_status ps_create_passion(
 
                 status = ps_timer_initialize(g_passion);
                 if (PS_STATUS_FAILED(status)) {
+                        ps_mouse_deinitialize(g_passion);
                         ps_math_deinitialize(g_passion);
                         ps_graphics_deinitialize(g_passion);
                         ps_filesystem_deinitialize(g_passion);
@@ -145,7 +168,9 @@ enum ps_status ps_release_passion(struct ps_passion *passion)
                 ps_window_deinitialize(g_passion);
                 ps_touch_deinitialize(g_passion);
                 ps_timer_deinitialize(g_passion);
+                ps_mouse_deinitialize(g_passion);
                 ps_math_deinitialize(g_passion);
+                ps_keyboard_deinitialize(g_passion);
                 ps_graphics_deinitialize(g_passion);
                 ps_filesystem_deinitialize(g_passion);
                 ps_event_deinitialize(g_passion);

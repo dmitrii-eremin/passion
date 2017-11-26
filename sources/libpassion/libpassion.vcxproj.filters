@@ -120,6 +120,12 @@
     <ClInclude Include="include\utils\ps_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\ps_keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\ps_mouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -159,6 +165,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\touch\ps_touch_item.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\ps_keyboard.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\ps_mouse.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,7 +5,9 @@
 #include "modules/ps_event.h"
 #include "modules/ps_filesystem.h"
 #include "modules/ps_graphics.h"
+#include "modules/ps_keyboard.h"
 #include "modules/ps_math.h"
+#include "modules/ps_mouse.h"
 #include "modules/ps_timer.h"
 #include "modules/ps_touch.h"
 #include "modules/ps_window.h"
@@ -25,7 +27,9 @@ struct ps_passion {
         struct ps_event event;
         struct ps_filesystem filesystem;        
         struct ps_graphics graphics;
+        struct ps_keyboard keyboard;
         struct ps_math math;
+        struct ps_mouse mouse;
         struct ps_timer timer;
         struct ps_touch touch;
         struct ps_window window;
