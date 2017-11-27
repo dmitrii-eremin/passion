@@ -38,17 +38,6 @@ enum ps_status ps_mouse_get_position(struct ps_passion *this,
         return PS_STATUS_SUCCESS;
 }
 
-enum ps_status ps_mouse_get_relative_mode(struct ps_passion *this,
-        bool *relative_mode
-)
-{
-        PS_CHECK(this && relative_mode, PS_STATUS_INVALID_ARGUMENT);
-
-        *relative_mode = SDL_GetRelativeMouseMode() != SDL_FALSE;
-
-        return PS_STATUS_SUCCESS;
-}
-
 enum ps_status ps_mouse_get_x(struct ps_passion *this,
         uint16_t *x
 )
@@ -95,6 +84,17 @@ enum ps_status ps_mouse_is_grabbed(struct ps_passion *this,
         }
 
         *grabbed = SDL_GetWindowGrab(handle) != SDL_FALSE;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_mouse_is_relative_mode(struct ps_passion *this,
+        bool *relative_mode
+)
+{
+        PS_CHECK(this && relative_mode, PS_STATUS_INVALID_ARGUMENT);
+
+        *relative_mode = SDL_GetRelativeMouseMode() != SDL_FALSE;
 
         return PS_STATUS_SUCCESS;
 }

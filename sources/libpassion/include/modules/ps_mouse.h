@@ -22,11 +22,6 @@ PS_PUBLIC_API enum ps_status ps_mouse_get_position(
         uint16_t *x, uint16_t *y
 );
 
-PS_PUBLIC_API enum ps_status ps_mouse_get_relative_mode(
-        struct ps_passion *this,
-        bool *relative_mode
-);
-
 PS_PUBLIC_API enum ps_status ps_mouse_get_x(
         struct ps_passion *this,
         uint16_t *x
@@ -46,6 +41,11 @@ PS_PUBLIC_API enum ps_status ps_mouse_is_down(
 PS_PUBLIC_API enum ps_status ps_mouse_is_grabbed(
         struct ps_passion *this,
         bool *grabbed
+);
+
+PS_PUBLIC_API enum ps_status ps_mouse_is_relative_mode(
+        struct ps_passion *this,
+        bool *relative_mode
 );
 
 PS_PUBLIC_API enum ps_status ps_mouse_is_visible(
