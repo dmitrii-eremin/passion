@@ -110,13 +110,16 @@ enum ps_status convert_event(struct ps_passion *this,
                         break;
                 }
                 break;
-        case SDL_KEYDOWN:
+        case SDL_KEYDOWN: 
+                if (!this->keyboard.key_repeat && sdl->key.repeat > 0)
+                        break;
+
                 evt->type = PS_EVENT_KEYPRESSED;
                 evt->data.key.key = 
                         (enum ps_keycode)sdl->key.keysym.sym;
                 evt->data.key.scancode = 
                         (enum ps_scancode)sdl->key.keysym.scancode;
-                evt->data.key.is_repeat = false;
+                evt->data.key.is_repeat = sdl->key.repeat > 0;
                 break;
         case SDL_KEYUP:
                 evt->type = PS_EVENT_KEYRELEASED;

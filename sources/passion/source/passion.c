@@ -16,7 +16,9 @@ enum ps_status load(struct ps_passion *this, int argc, char **argv)
 enum ps_status keypressed(struct ps_passion *this, enum ps_keycode key,
         enum ps_scancode scancode, bool is_repeat)
 {
-        if (scancode == PS_SCANCODE_ESCAPE) {
+        bool lshift = false;
+        ps_keyboard_is_scancode_down(this, PS_SCANCODE_LSHIFT, &lshift);
+        if (scancode == PS_SCANCODE_ESCAPE && lshift) {
                 ps_event_quit(this);
         }
 
