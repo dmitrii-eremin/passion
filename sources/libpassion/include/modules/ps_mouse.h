@@ -39,7 +39,8 @@ PS_PUBLIC_API enum ps_status ps_mouse_get_y(
 
 PS_PUBLIC_API enum ps_status ps_mouse_is_down(
         struct ps_passion *this,
-        enum ps_mouse_button button
+        enum ps_mouse_button button,
+        bool *is_down
 );
 
 PS_PUBLIC_API enum ps_status ps_mouse_is_grabbed(
