@@ -39,6 +39,7 @@ enum ps_status ps_math_noise_1d(struct ps_passion *this,
         PS_CHECK(this && out, PS_STATUS_INVALID_ARGUMENT);
 
         *out = ps_simplex_noise_1d(x);
+        *out = (*out) * 0.5 + 0.5;
 
         return PS_STATUS_SUCCESS;
 }
@@ -51,6 +52,7 @@ enum ps_status ps_math_noise_2d(struct ps_passion *this,
         PS_CHECK(this && out, PS_STATUS_INVALID_ARGUMENT);
 
         *out = ps_simplex_noise_2d(x, y);
+        *out = (*out) * 0.5 + 0.5;
 
         return PS_STATUS_SUCCESS;
 }
@@ -63,6 +65,7 @@ enum ps_status ps_math_noise_3d(struct ps_passion *this,
         PS_CHECK(this && out, PS_STATUS_INVALID_ARGUMENT);
 
         *out = ps_perlin_noise_3d(x, y, z);
+        *out = (*out) * 0.5 + 0.5;
 
         return PS_STATUS_SUCCESS;
 }
@@ -75,6 +78,7 @@ enum ps_status ps_math_noise_4d(struct ps_passion *this,
         PS_CHECK(this && out, PS_STATUS_INVALID_ARGUMENT);
 
         *out = ps_perlin_noise_4d(x, y, z, w);
+        *out = (*out) * 0.5 + 0.5;
 
         return PS_STATUS_SUCCESS;
 }
