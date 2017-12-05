@@ -25,6 +25,30 @@ PS_PUBLIC_API enum ps_status ps_math_get_random_seed(
         ps_random_seed *seed
 );
 
+PS_PUBLIC_API enum ps_status ps_math_noise_1d(
+        struct ps_passion *this,
+        double x,
+        double *out
+);
+
+PS_PUBLIC_API enum ps_status ps_math_noise_2d(
+        struct ps_passion *this,
+        double x, double y,
+        double *out
+);
+
+PS_PUBLIC_API enum ps_status ps_math_noise_3d(
+        struct ps_passion *this,
+        double x, double y, double z,
+        double *out
+);
+
+PS_PUBLIC_API enum ps_status ps_math_noise_4d(
+        struct ps_passion *this,
+        double x, double y, double z, double w,
+        double *out
+);
+
 PS_PUBLIC_API enum ps_status ps_math_random(
         struct ps_passion *this,
         double *out

@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\external\noise1234\noise1234.h" />
+    <ClInclude Include="include\external\noise1234\simplexnoise1234.h" />
     <ClInclude Include="include\libpassion.h" />
     <ClInclude Include="include\modules\event\ps_event_data.h" />
     <ClInclude Include="include\modules\event\ps_event_item.h" />
@@ -207,6 +209,8 @@
     <ClInclude Include="include\utils\ps_version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\external\noise1234\noise1234.cpp" />
+    <ClCompile Include="source\external\noise1234\simplexnoise1234.cpp" />
     <ClCompile Include="source\libpassion.c" />
     <ClCompile Include="source\modules\event\ps_event_item.c" />
     <ClCompile Include="source\modules\math\ps_random_generator.c" />

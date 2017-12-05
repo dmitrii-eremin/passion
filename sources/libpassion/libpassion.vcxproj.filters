@@ -129,6 +129,12 @@
     <ClInclude Include="include\modules\math\ps_random_generator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\external\noise1234\noise1234.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\external\noise1234\simplexnoise1234.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -177,6 +183,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\math\ps_random_generator.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\external\noise1234\noise1234.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\external\noise1234\simplexnoise1234.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
