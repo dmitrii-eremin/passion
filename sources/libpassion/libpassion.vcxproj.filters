@@ -135,6 +135,15 @@
     <ClInclude Include="include\external\noise1234\simplexnoise1234.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\system\ps_power_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\ps_system.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\system\ps_os.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -189,6 +198,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\external\noise1234\simplexnoise1234.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\ps_system.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

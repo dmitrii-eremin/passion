@@ -1,0 +1,14 @@
+#ifndef LIBPASSION_INCLUDE_MODULES_SYSTEM_PS_OS_H_
+#define LIBPASSION_INCLUDE_MODULES_SYSTEM_PS_OS_H_
+
+enum ps_os {
+        PS_OS_UNKNOWN,
+        PS_OS_WINDOWS,
+        PS_OS_WINDOWS_UWP,
+        PS_OS_LINUX,
+        PS_OS_MACOSX,
+        PS_OS_ANDROID,
+        PS_OS_IOS
+};
+
+#endif

@@ -8,6 +8,7 @@
 #include "modules/ps_keyboard.h"
 #include "modules/ps_math.h"
 #include "modules/ps_mouse.h"
+#include "modules/ps_system.h"
 #include "modules/ps_timer.h"
 #include "modules/ps_touch.h"
 #include "modules/ps_window.h"
@@ -30,6 +31,7 @@ struct ps_passion {
         struct ps_keyboard keyboard;
         struct ps_math math;
         struct ps_mouse mouse;
+        struct ps_system system;
         struct ps_timer timer;
         struct ps_touch touch;
         struct ps_window window;
