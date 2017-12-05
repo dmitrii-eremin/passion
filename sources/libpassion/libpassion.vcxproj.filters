@@ -126,6 +126,9 @@
     <ClInclude Include="include\modules\mouse\ps_mouse_button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\math\ps_random_generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -171,6 +174,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\ps_mouse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\math\ps_random_generator.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

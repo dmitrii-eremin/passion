@@ -172,6 +172,7 @@
     <ClInclude Include="include\modules\event\ps_event_item.h" />
     <ClInclude Include="include\modules\event\ps_event_type.h" />
     <ClInclude Include="include\modules\keyboard\ps_keycode.h" />
+    <ClInclude Include="include\modules\math\ps_random_generator.h" />
     <ClInclude Include="include\modules\mouse\ps_mouse_button.h" />
     <ClInclude Include="include\modules\keyboard\ps_scancode.h" />
     <ClInclude Include="include\modules\filesystem\ps_filedecoder.h" />
@@ -208,6 +209,7 @@
   <ItemGroup>
     <ClCompile Include="source\libpassion.c" />
     <ClCompile Include="source\modules\event\ps_event_item.c" />
+    <ClCompile Include="source\modules\math\ps_random_generator.c" />
     <ClCompile Include="source\modules\ps_callbacks.c" />
     <ClCompile Include="source\modules\ps_event.c" />
     <ClCompile Include="source\modules\ps_filesystem.c" />
