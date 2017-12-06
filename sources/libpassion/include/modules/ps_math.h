@@ -20,6 +20,12 @@ PS_PRIVATE_API enum ps_status ps_math_deinitialize(
         struct ps_passion *this
 );
 
+PS_PUBLIC_API enum ps_status ps_math_gamma_to_linear(
+        struct ps_passion *this,
+        double cred, double cgreen, double cblue,
+        double *lred, double *lgreen, double *lblue
+);
+
 PS_PUBLIC_API enum ps_status ps_math_get_random_seed(
         struct ps_passion *this,
         ps_random_seed *seed
@@ -36,6 +42,12 @@ PS_PUBLIC_API enum ps_status ps_math_is_convex(
         bool *is_convex,
         uint32_t vertices_count,
         ...
+);
+
+PS_PUBLIC_API enum ps_status ps_math_linear_to_gamma(
+        struct ps_passion *this,
+        double lred, double lgreen, double lblue,
+        double *cred, double *cgreen, double *cblue
 );
 
 PS_PUBLIC_API enum ps_status ps_math_noise_1d(

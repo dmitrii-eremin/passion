@@ -1,9 +1,26 @@
 #include <passion.h>
 
+#include <math.h>
 #include <stdarg.h>
 
 #include "../../include/external/noise1234/noise1234.h"
 #include "../../include/external/noise1234/simplexnoise1234.h"
+
+double ps_gamma_to_linear(double value)
+{
+        if (value <= 0.04045)
+                return value / 12.92;
+        else
+                return pow((value + 0.055) / 1.055, 2.4);
+}
+
+double ps_linear_to_gamma(double value)
+{
+        if (value <= 0.0031308)
+                return value * 12.92;
+        else
+                return 1.055 * pow(value, 1.0 / 2.4) - 0.055;
+}
 
 enum ps_status ps_math_initialize(struct ps_passion *this)
 {
@@ -21,6 +38,20 @@ enum ps_status ps_math_deinitialize(struct ps_passion *this)
         }
 
         PS_STATUS_ASSERT(ps_random_generator_free(this, this->math.random));
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_math_gamma_to_linear(struct ps_passion *this,
+        double cred, double cgreen, double cblue,
+        double *lred, double *lgreen, double *lblue
+)
+{
+        PS_CHECK(this && lred && lgreen && lblue, PS_STATUS_INVALID_ARGUMENT);
+
+        *lred = ps_gamma_to_linear(cred);
+        *lgreen = ps_gamma_to_linear(cgreen);
+        *lblue = ps_gamma_to_linear(cblue);
 
         return PS_STATUS_SUCCESS;
 }
@@ -113,6 +144,20 @@ enum ps_status ps_math_is_convex(struct ps_passion *this,
         free(vert_y);
 
         *is_convex = true;
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_math_linear_to_gamma(struct ps_passion *this,
+        double lred, double lgreen, double lblue,
+        double *cred, double *cgreen, double *cblue
+)
+{
+        PS_CHECK(this && cred && cgreen && cblue, PS_STATUS_INVALID_ARGUMENT);
+
+        *cred = ps_linear_to_gamma(lred);
+        *cgreen = ps_linear_to_gamma(lgreen);
+        *cblue = ps_linear_to_gamma(lblue);
+
         return PS_STATUS_SUCCESS;
 }
 
