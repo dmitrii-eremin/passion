@@ -17,6 +17,7 @@
 #include "utils/ps_check.h"
 #include "utils/ps_context.h"
 #include "utils/ps_status.h"
+#include "utils/ps_vector_2d.h"
 #include "utils/ps_version.h"
 
 #include "ps_config.h"

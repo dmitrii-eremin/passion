@@ -144,6 +144,9 @@
     <ClInclude Include="include\modules\system\ps_os.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\utils\ps_vector_2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -201,6 +204,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\ps_system.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\utils\ps_vector_2d.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

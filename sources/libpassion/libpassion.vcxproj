@@ -209,6 +209,7 @@
     <ClInclude Include="include\utils\ps_list.h" />
     <ClInclude Include="include\utils\ps_platform.h" />
     <ClInclude Include="include\utils\ps_status.h" />
+    <ClInclude Include="include\utils\ps_vector_2d.h" />
     <ClInclude Include="include\utils\ps_version.h" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +232,7 @@
     <ClCompile Include="source\modules\touch\ps_touch_item.c" />
     <ClCompile Include="source\passion.c" />
     <ClCompile Include="source\ps_config.c" />
+    <ClCompile Include="source\utils\ps_vector_2d.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
