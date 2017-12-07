@@ -5,6 +5,8 @@
 #include "../utils/ps_api.h"
 #include "../utils/ps_status.h"
 
+#include "graphics/ps_display_state.h"
+
 #include "graphics/ps_graphics_coordinate_system.h"
 #include "graphics/ps_graphics_drawing.h"
 #include "graphics/ps_graphics_state.h"
@@ -14,8 +16,7 @@
 struct ps_passion;
 
 struct ps_graphics {
-        struct ps_color background_color;
-        struct ps_color foreground_color;
+        struct ps_display_state_item *display_states;
 };
 
 PS_PRIVATE_API enum ps_status ps_graphics_initialize(

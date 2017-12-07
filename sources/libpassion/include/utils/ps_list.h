@@ -43,6 +43,11 @@ MODIFIER enum ps_status NAME##_find(\
         DATA **element, \
         void *userdata, \
         bool (*comparator)(DATA *item, void *userdata) \
+); \
+\
+MODIFIER enum ps_status NAME##_get_last(\
+        struct ITEM **list, \
+        DATA **element \
 );
 
 
@@ -191,6 +196,25 @@ enum ps_status NAME##_find( \
                         *element = &head->data; \
                         break; \
                 }\
+                head = head->next; \
+        } while (head); \
+\
+        return PS_STATUS_SUCCESS; \
+} \
+\
+enum ps_status NAME##_get_last( \
+        struct ITEM **list, \
+        DATA **element \
+) \
+{ \
+        PS_CHECK(list && element, PS_STATUS_INVALID_ARGUMENT); \
+\
+        *element = NULL; \
+        struct ITEM *head = *list; \
+        do { \
+                if (!head) \
+                        break; \
+                *element = &head->data; \
                 head = head->next; \
         } while (head); \
 \

@@ -173,11 +173,13 @@
     <ClInclude Include="include\modules\event\ps_event_data.h" />
     <ClInclude Include="include\modules\event\ps_event_item.h" />
     <ClInclude Include="include\modules\event\ps_event_type.h" />
+    <ClInclude Include="include\modules\graphics\ps_display_state.h" />
     <ClInclude Include="include\modules\graphics\ps_graphics_drawing.h" />
     <ClInclude Include="include\modules\graphics\ps_graphics_state.h" />
     <ClInclude Include="include\modules\graphics\ps_graphics_coordinate_system.h" />
     <ClInclude Include="include\modules\graphics\ps_graphics_system_information.h" />
     <ClInclude Include="include\modules\graphics\ps_graphics_window.h" />
+    <ClInclude Include="include\modules\graphics\ps_line_join.h" />
     <ClInclude Include="include\modules\keyboard\ps_keycode.h" />
     <ClInclude Include="include\modules\math\ps_random_generator.h" />
     <ClInclude Include="include\modules\mouse\ps_mouse_button.h" />
@@ -222,6 +224,7 @@
     <ClCompile Include="source\external\noise1234\simplexnoise1234.cpp" />
     <ClCompile Include="source\libpassion.c" />
     <ClCompile Include="source\modules\event\ps_event_item.c" />
+    <ClCompile Include="source\modules\graphics\ps_display_state.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_coordinate_system.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_drawing.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_state.c" />

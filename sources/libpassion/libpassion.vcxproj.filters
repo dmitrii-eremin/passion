@@ -162,6 +162,12 @@
     <ClInclude Include="include\modules\graphics\ps_graphics_coordinate_system.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_line_join.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_display_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -237,6 +243,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\graphics\ps_graphics_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_display_state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

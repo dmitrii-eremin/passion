@@ -9,8 +9,14 @@ enum ps_status ps_graphics_get_background_color(struct ps_passion *this,
 {
         PS_CHECK(this && color, PS_STATUS_INVALID_ARGUMENT);
 
-        memcpy(color, &this->graphics.background_color,
-                sizeof(struct ps_color));
+        struct ps_display_state *state = NULL;
+        PS_STATUS_ASSERT(
+                ps_display_state_list_get_last(
+                        &this->graphics.display_states, &state
+                )
+        );
+
+        memcpy(color, &state->background_color, sizeof(struct ps_color));
 
         return PS_STATUS_SUCCESS;
 }
@@ -21,8 +27,14 @@ enum ps_status ps_graphics_get_color(struct ps_passion *this,
 {
         PS_CHECK(this && color, PS_STATUS_INVALID_ARGUMENT);
 
-        memcpy(color, &this->graphics.foreground_color,
-                sizeof(struct ps_color));
+        struct ps_display_state *state = NULL;
+        PS_STATUS_ASSERT(
+                ps_display_state_list_get_last(
+                        &this->graphics.display_states, &state
+                )
+        );
+
+        memcpy(color, &state->foreground_color, sizeof(struct ps_color));
 
         return PS_STATUS_SUCCESS;
 }
@@ -40,11 +52,17 @@ enum ps_status ps_graphics_set_background_color(struct ps_passion *this,
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
 
-        struct ps_graphics *g = &this->graphics;
-        g->background_color.red = red;
-        g->background_color.green = green;
-        g->background_color.blue = blue;
-        g->background_color.alpha = alpha;
+        struct ps_display_state *state = NULL;
+        PS_STATUS_ASSERT(
+                ps_display_state_list_get_last(
+                        &this->graphics.display_states, &state
+                )
+        );
+
+        state->background_color.red = red;
+        state->background_color.green = green;
+        state->background_color.blue = blue;
+        state->background_color.alpha = alpha;
 
         return PS_STATUS_SUCCESS;
 }
@@ -55,11 +73,17 @@ enum ps_status ps_graphics_set_color(struct ps_passion *this,
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
 
-        struct ps_graphics *g = &this->graphics;
-        g->foreground_color.red = red;
-        g->foreground_color.green = green;
-        g->foreground_color.blue = blue;
-        g->foreground_color.alpha = alpha;
+        struct ps_display_state *state = NULL;
+        PS_STATUS_ASSERT(
+                ps_display_state_list_get_last(
+                        &this->graphics.display_states, &state
+                )
+        );
+
+        state->foreground_color.red = red;
+        state->foreground_color.green = green;
+        state->foreground_color.blue = blue;
+        state->foreground_color.alpha = alpha;
 
         return PS_STATUS_SUCCESS;
 }
