@@ -3,6 +3,8 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 
+#include "../../../include/modules/graphics/ps_get_display_state.h"
+
 enum ps_status ps_graphics_get_dimensions(struct ps_passion *this,
         uint16_t *width, uint16_t *height
 )

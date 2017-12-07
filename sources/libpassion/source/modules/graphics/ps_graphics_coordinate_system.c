@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 
-#include <passion.h>
+#include "../../../include/modules/graphics/ps_get_display_state.h"
 
 enum ps_status ps_graphics_origin(struct ps_passion *this)
 {

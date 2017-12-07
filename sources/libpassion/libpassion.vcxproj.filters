@@ -168,6 +168,9 @@
     <ClInclude Include="include\modules\graphics\ps_display_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_get_display_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">

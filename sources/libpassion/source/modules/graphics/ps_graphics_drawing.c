@@ -3,18 +3,15 @@
 #include <SDL.h>
 #include <SDL_opengl.h>
 
+#include "../../../include/modules/graphics/ps_get_display_state.h"
+
 enum ps_status ps_graphics_clear(struct ps_passion *this,
         struct ps_color *color
 )
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
 
-        struct ps_display_state *state = NULL;
-        PS_STATUS_ASSERT(
-                ps_display_state_list_get_last(
-                        &this->graphics.display_states, &state
-                )
-        );
+        PS_GET_DISPLAY_STATE(state);
 
         struct ps_color *color_to_use = color ?
                 color : &state->background_color;
