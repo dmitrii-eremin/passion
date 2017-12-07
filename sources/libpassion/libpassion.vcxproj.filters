@@ -147,6 +147,21 @@
     <ClInclude Include="include\utils\ps_vector_2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_graphics_drawing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_graphics_state.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_graphics_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_graphics_system_information.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_graphics_coordinate_system.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -207,6 +222,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\utils\ps_vector_2d.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_graphics_coordinate_system.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_graphics_drawing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_graphics_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_graphics_system_information.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_graphics_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
