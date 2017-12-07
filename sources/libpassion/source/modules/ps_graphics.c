@@ -28,7 +28,7 @@ enum ps_status ps_graphics_initialize(struct ps_passion *this)
 {       
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
 
-        this->graphics.display_states = NULL;
+        this->graphics.display_states = NULL;        
 
         struct ps_display_state initial_display_state = { 0 };
         PS_STATUS_ASSERT(ps_get_default_display_state(&initial_display_state));
@@ -36,6 +36,8 @@ enum ps_status ps_graphics_initialize(struct ps_passion *this)
                 &this->graphics.display_states,
                 &initial_display_state
         );
+
+        this->graphics.stack_types = NULL;
 
         return PS_STATUS_SUCCESS;
 }
@@ -47,6 +49,7 @@ enum ps_status ps_graphics_deinitialize(struct ps_passion *this)
         }
 
         ps_display_state_list_clear(&this->graphics.display_states);
+        ps_stack_type_list_clear(&this->graphics.stack_types);
 
         return PS_STATUS_SUCCESS;
 }

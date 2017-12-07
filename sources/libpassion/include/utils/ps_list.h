@@ -116,12 +116,16 @@ enum ps_status NAME##_pop_front(struct ITEM **list, \
 { \
         PS_CHECK(list && element, PS_STATUS_INVALID_ARGUMENT); \
 \
+        bool last_one_item = (*list)->next == NULL; \
+\
         struct ITEM *head = *list; \
         memcpy(element, &head->data, sizeof(DATA)); \
 \
         *list = head->next; \
         free(head); \
 \
+        if (last_one_item) \
+                *list = NULL; \
         return PS_STATUS_SUCCESS; \
 } \
 \
@@ -130,6 +134,8 @@ enum ps_status NAME##_pop_back(struct ITEM **list, \
 ) \
 { \
         PS_CHECK(list && element, PS_STATUS_INVALID_ARGUMENT); \
+\
+        bool last_one_item = (*list)->next == NULL; \
 \
         struct ITEM *prev = NULL; \
         struct ITEM *head = *list; \
@@ -145,6 +151,8 @@ enum ps_status NAME##_pop_back(struct ITEM **list, \
 \
         if (prev) \
                 prev->next = NULL; \
+        if (last_one_item) \
+                *list = NULL; \
 \
         return PS_STATUS_SUCCESS; \
 } \

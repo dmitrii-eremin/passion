@@ -171,6 +171,12 @@
     <ClInclude Include="include\modules\graphics\ps_get_display_state.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_stack_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_stack_type_item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -249,6 +255,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\graphics\ps_display_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\modules\graphics\ps_stack_type_item.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

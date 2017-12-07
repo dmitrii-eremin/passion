@@ -3,8 +3,17 @@
 #include "../utils/ps_api.h"
 #include "../utils/ps_status.h"
 
-PS_PUBLIC_API enum ps_status ps_graphics_origin(
-        struct ps_passion *this
+#include "ps_stack_type.h"
+
+PS_PUBLIC_API enum ps_status ps_graphics_origin(struct ps_passion *this);
+
+PS_PUBLIC_API enum ps_status ps_graphics_pop(struct ps_passion *this);
+
+PS_PUBLIC_API enum ps_status ps_graphics_push(struct ps_passion *this);
+
+PS_PUBLIC_API enum ps_status ps_graphics_push_ex(
+        struct ps_passion *this,
+        enum ps_stack_type stack_type
 );
 
 #endif
