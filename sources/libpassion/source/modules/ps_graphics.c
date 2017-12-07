@@ -9,6 +9,13 @@ PS_PRIVATE_API enum ps_status ps_get_default_display_state(struct ps_display_sta
 {
         static const struct ps_display_state default_display_state = {
                 .line_join = PS_LINE_JOIN_BEVEL,
+                .line_style = PS_LINE_STYLE_SMOOTH,
+
+                .point_size = 1.0,
+                .line_width = 1.0,
+
+                .wireframe = false,
+
                 .background_color = {
                         .red = 0.0,.green = 0.0,.blue = 0.0,.alpha = 1.0
                 },

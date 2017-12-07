@@ -181,6 +181,7 @@
     <ClInclude Include="include\modules\graphics\ps_graphics_system_information.h" />
     <ClInclude Include="include\modules\graphics\ps_graphics_window.h" />
     <ClInclude Include="include\modules\graphics\ps_line_join.h" />
+    <ClInclude Include="include\modules\graphics\ps_line_style.h" />
     <ClInclude Include="include\modules\graphics\ps_stack_type.h" />
     <ClInclude Include="include\modules\graphics\ps_stack_type_item.h" />
     <ClInclude Include="include\modules\keyboard\ps_keycode.h" />

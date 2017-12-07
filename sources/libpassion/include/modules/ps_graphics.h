@@ -6,6 +6,7 @@
 #include "../utils/ps_status.h"
 
 #include "graphics/ps_display_state.h"
+#include "graphics/ps_line_style.h"
 #include "graphics/ps_stack_type_item.h"
 
 #include "graphics/ps_graphics_coordinate_system.h"

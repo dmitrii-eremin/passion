@@ -177,6 +177,9 @@
     <ClInclude Include="include\modules\graphics\ps_stack_type_item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\modules\graphics\ps_line_style.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">

@@ -44,10 +44,62 @@ enum ps_status ps_graphics_get_line_join(struct ps_passion *this,
         return PS_STATUS_SUCCESS;
 }
 
+enum ps_status ps_graphics_get_line_style(struct ps_passion *this,
+        enum ps_line_style *line_style
+)
+{
+        PS_CHECK(this && line_style, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+        
+        *line_style = state->line_style;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_get_line_width(struct ps_passion *this,
+        double *line_width
+)
+{
+        PS_CHECK(this && line_width, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+
+        *line_width = state->line_width;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_get_point_size(struct ps_passion *this,
+        double *point_size
+)
+{
+        PS_CHECK(this && point_size, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+
+        *point_size = state->point_size;
+
+        return PS_STATUS_SUCCESS;
+}
+
 enum ps_status ps_graphics_is_active(struct ps_passion *this, bool *active)
 {
         PS_CHECK(this && active, PS_STATUS_INVALID_ARGUMENT);
         *active = true;
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_is_wireframe(struct ps_passion *this,
+        bool *wireframe
+)
+{
+        PS_CHECK(this && wireframe, PS_STATUS_INVALID_ARGUMENT);
+        
+        PS_GET_DISPLAY_STATE(state);
+
+        *wireframe = state->wireframe;
+
         return PS_STATUS_SUCCESS;
 }
 
@@ -92,6 +144,58 @@ enum ps_status ps_graphics_set_line_join(struct ps_passion *this,
         PS_GET_DISPLAY_STATE(state);
 
         state->line_join = line_join;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_set_line_style(struct ps_passion *this,
+        enum ps_line_style line_style
+)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+
+        state->line_style = line_style;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_set_line_width(struct ps_passion *this,
+        double line_width
+)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+
+        state->line_width = line_width;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_set_point_size(struct ps_passion *this,
+        double point_size
+)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+
+        state->point_size = point_size;
+
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status ps_graphics_set_wireframe(struct ps_passion *this,
+        bool wireframe
+)
+{
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+
+        PS_GET_DISPLAY_STATE(state);
+
+        state->wireframe = wireframe;
 
         return PS_STATUS_SUCCESS;
 }
