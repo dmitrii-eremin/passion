@@ -52,15 +52,25 @@ int main(int argc, char **argv)
 
         struct ps_passion *passion = NULL;
 
-        ps_create_passion(PS_VERSION_CURRENT, &ctx, &passion);
+        enum ps_status status = PS_STATUS_SUCCESS;
+        status = ps_create_passion(PS_VERSION_CURRENT, &ctx, &passion);
+        if (PS_STATUS_FAILED(status)) {
+                return 0;
+        }
 
         PS_CALLBACK_SET(passion, load, load);
         PS_CALLBACK_SET(passion, keypressed, keypressed);
         PS_CALLBACK_SET(passion, mousereleased, mousereleased);
 
-        ps_run(passion);
+        status = ps_run(passion);
+        if (PS_STATUS_FAILED(status)) {
+                return 0;
+        }
 
-        ps_release_passion(passion);
+        status = ps_release_passion(passion);
+        if (PS_STATUS_FAILED(status)) {
+                return 0;
+        }
 
         return 0;
 }

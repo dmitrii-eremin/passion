@@ -1,5 +1,6 @@
 #ifndef LIBPASSION_INCLUDE_PASSION_H_
 #define LIBPASSION_INCLUDE_PASSION_H_
+#include "external/glad/glad/glad.h"
 
 #include "modules/ps_callbacks.h"
 #include "modules/ps_event.h"

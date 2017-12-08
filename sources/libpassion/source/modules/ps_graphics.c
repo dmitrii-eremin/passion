@@ -1,9 +1,8 @@
 #include <string.h>
 
-#include <SDL.h>
-#include <SDL_opengl.h>
-
 #include <passion.h>
+
+#include <SDL.h>
 
 PS_PRIVATE_API enum ps_status ps_get_default_display_state(struct ps_display_state *state)
 {
@@ -33,7 +32,7 @@ PS_PRIVATE_API enum ps_status ps_get_default_display_state(struct ps_display_sta
 
 enum ps_status ps_graphics_initialize(struct ps_passion *this)
 {       
-        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
+        PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);        
 
         this->graphics.display_states = NULL;        
 

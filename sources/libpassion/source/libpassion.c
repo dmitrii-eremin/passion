@@ -152,6 +152,10 @@ enum ps_status ps_create_passion(
         ps_window_set_mode(g_passion, config.window.width, 
                 config.window.height, NULL);
 
+        if (!gladLoadGL()) {
+                return PS_STATUS_NOT_INITIALIZED;
+        }
+
         return ps_get_passion(passion);
 }
 

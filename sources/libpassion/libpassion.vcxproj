@@ -167,6 +167,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\external\glad\glad\glad.h" />
+    <ClInclude Include="include\external\glad\KHR\khrplatform.h" />
     <ClInclude Include="include\external\noise1234\noise1234.h" />
     <ClInclude Include="include\external\noise1234\simplexnoise1234.h" />
     <ClInclude Include="include\libpassion.h" />
@@ -224,6 +226,7 @@
     <ClInclude Include="include\utils\ps_version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\external\glad\glad.c" />
     <ClCompile Include="source\external\noise1234\noise1234.cpp" />
     <ClCompile Include="source\external\noise1234\simplexnoise1234.cpp" />
     <ClCompile Include="source\libpassion.c" />

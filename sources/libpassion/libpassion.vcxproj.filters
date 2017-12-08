@@ -180,6 +180,12 @@
     <ClInclude Include="include\modules\graphics\ps_line_style.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="include\external\glad\KHR\khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\external\glad\glad\glad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\libpassion.c">
@@ -261,6 +267,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="source\modules\graphics\ps_stack_type_item.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\external\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
