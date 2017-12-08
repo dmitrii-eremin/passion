@@ -3,6 +3,8 @@
 #include <stdbool.h>
 
 #include "../utils/ps_api.h"
+#include "../utils/ps_matrix_3.h"
+#include "../utils/ps_matrix_4.h"
 #include "../utils/ps_status.h"
 
 #include "graphics/ps_display_state.h"
