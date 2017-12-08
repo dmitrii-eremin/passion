@@ -10,6 +10,18 @@ enum ps_status conf(struct ps_config *t)
 
 enum ps_status load(struct ps_passion *this, int argc, char **argv)
 {
+        ps_graphics_set_point_size(this, 10.0);
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status update(struct ps_passion *this, double dt)
+{
+        return PS_STATUS_SUCCESS;
+}
+
+enum ps_status draw(struct ps_passion *this)
+{
+        ps_graphics_points(this, 4, 1.0, 1.0, 50.0, 50.0, 50.0, 0.0, 0.0, 50.0);
         return PS_STATUS_SUCCESS;
 }
 
@@ -59,6 +71,8 @@ int main(int argc, char **argv)
         }
 
         PS_CALLBACK_SET(passion, load, load);
+        PS_CALLBACK_SET(passion, update, update);
+        PS_CALLBACK_SET(passion, draw, draw);
         PS_CALLBACK_SET(passion, keypressed, keypressed);
         PS_CALLBACK_SET(passion, mousereleased, mousereleased);
 

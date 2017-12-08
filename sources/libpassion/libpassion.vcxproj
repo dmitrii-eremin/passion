@@ -184,8 +184,12 @@
     <ClInclude Include="include\modules\graphics\ps_graphics_window.h" />
     <ClInclude Include="include\modules\graphics\ps_line_join.h" />
     <ClInclude Include="include\modules\graphics\ps_line_style.h" />
+    <ClInclude Include="include\modules\graphics\ps_opengl_driver.h" />
     <ClInclude Include="include\modules\graphics\ps_stack_type.h" />
     <ClInclude Include="include\modules\graphics\ps_stack_type_item.h" />
+    <ClInclude Include="include\modules\graphics\ps_graphics_stats.h" />
+    <ClInclude Include="include\modules\graphics\ps_vertex_attrib_flags.h" />
+    <ClInclude Include="include\modules\graphics\ps_vertex_attrib_id.h" />
     <ClInclude Include="include\modules\keyboard\ps_keycode.h" />
     <ClInclude Include="include\modules\math\ps_random_generator.h" />
     <ClInclude Include="include\modules\mouse\ps_mouse_button.h" />
@@ -235,8 +239,10 @@
     <ClCompile Include="source\modules\graphics\ps_graphics_coordinate_system.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_drawing.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_state.c" />
+    <ClCompile Include="source\modules\graphics\ps_graphics_stats.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_system_information.c" />
     <ClCompile Include="source\modules\graphics\ps_graphics_window.c" />
+    <ClCompile Include="source\modules\graphics\ps_opengl_driver.c" />
     <ClCompile Include="source\modules\graphics\ps_stack_type_item.c" />
     <ClCompile Include="source\modules\math\ps_random_generator.c" />
     <ClCompile Include="source\modules\ps_callbacks.c" />

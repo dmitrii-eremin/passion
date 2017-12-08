@@ -182,6 +182,7 @@ enum ps_status ps_graphics_set_point_size(struct ps_passion *this,
         PS_GET_DISPLAY_STATE(state);
 
         state->point_size = point_size;
+        glPointSize((GLfloat)point_size);
 
         return PS_STATUS_SUCCESS;
 }

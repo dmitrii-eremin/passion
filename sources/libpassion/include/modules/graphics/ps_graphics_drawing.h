@@ -11,6 +11,12 @@ PS_PUBLIC_API enum ps_status ps_graphics_clear(
         struct ps_color *color
 );
 
+PS_PUBLIC_API enum ps_status ps_graphics_points(
+        struct ps_passion *this,
+        uint32_t count,
+        ...
+);
+
 PS_PUBLIC_API enum ps_status ps_graphics_present(
         struct ps_passion *this
 );

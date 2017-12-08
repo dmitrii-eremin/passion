@@ -38,12 +38,16 @@ enum ps_status ps_graphics_initialize(struct ps_passion *this)
 
         struct ps_display_state initial_display_state = { 0 };
         PS_STATUS_ASSERT(ps_get_default_display_state(&initial_display_state));
-        ps_display_state_list_push_back(
-                &this->graphics.display_states,
-                &initial_display_state
+        PS_STATUS_ASSERT(
+                ps_display_state_list_push_back(
+                        &this->graphics.display_states,
+                        &initial_display_state
+                )
         );
 
         this->graphics.stack_types = NULL;
+
+        PS_STATUS_ASSERT(ps_reset_graphics_stats(&this->graphics.stats));
 
         return PS_STATUS_SUCCESS;
 }
