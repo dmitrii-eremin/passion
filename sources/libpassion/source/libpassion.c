@@ -156,6 +156,8 @@ enum ps_status ps_create_passion(
                 return PS_STATUS_NOT_INITIALIZED;
         }
 
+        PS_STATUS_ASSERT(ps_ogl_setup_context(g_passion));
+
         return ps_get_passion(passion);
 }
 

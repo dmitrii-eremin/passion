@@ -36,6 +36,8 @@ enum ps_status ps_graphics_points(struct ps_passion *this,
         if (count == 0) {
                 return PS_STATUS_SUCCESS;
         }
+
+        ps_ogl_prepare_draw(this);
         
         double *coords = malloc(count * 2 * sizeof(double));
 
@@ -50,6 +52,7 @@ enum ps_status ps_graphics_points(struct ps_passion *this,
         glVertexAttribPointer(PS_VERTEX_ATTRIB_POS, 2, 
                 GL_DOUBLE, GL_FALSE, 0, coords);
 
+        ps_ogl_use_vertex_attrib_arrays(this, PS_VERTEX_ATTRIBFLAG_POS);
         ps_ogl_draw_arrays(this, GL_POINTS, 0, count);
 
         free(coords);

@@ -131,6 +131,9 @@ enum ps_status ps_graphics_set_color(struct ps_passion *this,
         state->foreground_color.blue = blue;
         state->foreground_color.alpha = alpha;
 
+        glVertexAttrib4d(PS_VERTEX_ATTRIB_CONSTANT_COLOR, 
+                red, green, blue, alpha);
+
         return PS_STATUS_SUCCESS;
 }
 

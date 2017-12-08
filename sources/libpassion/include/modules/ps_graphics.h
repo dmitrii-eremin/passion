@@ -28,6 +28,10 @@ struct ps_graphics {
         struct ps_stack_type_item *stack_types;
 
         struct ps_graphics_stats stats;
+
+        struct {
+                uint32_t enabled_attrib_arrays;
+        } state;
 };
 
 PS_PRIVATE_API enum ps_status ps_graphics_initialize(

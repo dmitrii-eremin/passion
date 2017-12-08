@@ -22,6 +22,8 @@ enum ps_status update(struct ps_passion *this, double dt)
 enum ps_status draw(struct ps_passion *this)
 {
         ps_graphics_points(this, 4, 1.0, 1.0, 50.0, 50.0, 50.0, 0.0, 0.0, 50.0);
+
+        ps_graphics_points(this, 4, 101.0, 101.0, 150.0, 150.0, 150.0, 100.0, 100.0, 150.0);
         return PS_STATUS_SUCCESS;
 }
 

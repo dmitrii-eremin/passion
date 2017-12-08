@@ -156,7 +156,7 @@ enum ps_status ps_window_set_mode(struct ps_passion *this,
         if (!sdl_context) {
                 SDL_DestroyWindow(sdl_window);
                 return PS_STATUS_FAILED_TO_CREATE_CONTEXT;
-        }
+        }        
 
         w->window = sdl_window;
         w->context = sdl_context;
