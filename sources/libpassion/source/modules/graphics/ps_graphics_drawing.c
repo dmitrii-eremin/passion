@@ -17,10 +17,10 @@ enum ps_status ps_graphics_clear(struct ps_passion *this,
         struct ps_color *color_to_use = color ?
                 color : &state->background_color;
 
-        glClearColor((GLclampf)color_to_use->red,
-                (GLclampf)color_to_use->green,
-                (GLclampf)color_to_use->blue,
-                (GLclampf)color_to_use->alpha
+        glClearColor((GLclampf)(color_to_use->red / 255.0f),
+                (GLclampf)(color_to_use->green / 255.0f),
+                (GLclampf)(color_to_use->blue / 255.0f),
+                (GLclampf)(color_to_use->alpha / 255.0f)
         );
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

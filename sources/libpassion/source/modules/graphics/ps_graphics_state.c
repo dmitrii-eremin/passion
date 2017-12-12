@@ -103,7 +103,7 @@ enum ps_status ps_graphics_is_wireframe(struct ps_passion *this,
 }
 
 enum ps_status ps_graphics_set_background_color(struct ps_passion *this,
-        double red, double green, double blue, double alpha
+        uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha
 )
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);
@@ -119,7 +119,7 @@ enum ps_status ps_graphics_set_background_color(struct ps_passion *this,
 }
 
 enum ps_status ps_graphics_set_color(struct ps_passion *this,
-        double red, double green, double blue, double alpha
+        uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha
 )
 {
         PS_CHECK(this, PS_STATUS_INVALID_ARGUMENT);

@@ -16,10 +16,10 @@ PS_PRIVATE_API enum ps_status ps_get_default_display_state(struct ps_display_sta
                 .wireframe = false,
 
                 .background_color = {
-                        .red = 0.0,.green = 0.0,.blue = 0.0,.alpha = 1.0
+                        .red = 0,.green = 0,.blue = 0,.alpha = 255
                 },
                         .foreground_color = {
-                        .red = 1.0,.green = 1.0,.blue = 1.0,.alpha = 1.0
+                        .red = 255,.green = 255,.blue = 255,.alpha = 255
                 }
         };
 
